@@ -1,4 +1,4 @@
-package POO;
+package JAVA.CalculadoraCustoViagem;
 
 /**
  * CalculadoraCustoViagem
