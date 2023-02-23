@@ -1,7 +1,4 @@
 package JAVA.CalculadoraDescontos;
-
-import java.security.cert.X509CRLEntry;
-
 /**
  * CalculadoraDescontos
  */
