@@ -1,5 +1,8 @@
 package JAVA.EstruturaDecisaoIf;
 
 public class App {
-    public static void
+    public static void main(String[] args) {
+        EstruturaDecisaoIf obj1 = new EstruturaDecisaoIf();
+        obj1.DecisaoIf();
+    }
 }
