@@ -8,8 +8,9 @@ public class EstruturaDecisaoIf {
     public void DecisaoIf() {
         System.out.println("Qual é o Preço do Produto?");
         double precoProduto = sc.nextDouble();
-        // boolean produtoAltoValor = precoProduto >= 100; NAO NECESSARIO MAIS
+
         double percentualDesconto = 0.0; // Desconto Inicial
+
         if (precoProduto >= 200) { // Se o Preço do Produto for Maior ou Igual a 200
             percentualDesconto = 10.0; // O Desconto Será de 10%
         }
