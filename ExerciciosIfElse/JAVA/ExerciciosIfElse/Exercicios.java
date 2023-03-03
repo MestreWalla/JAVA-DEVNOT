@@ -73,10 +73,19 @@ public class Exercicios {
 
         if (primeiroNumero > segundoNumero && segundoNumero > terceiroNumero) {
             System.out.println(terceiroNumero + " " + segundoNumero + " " + primeiroNumero);
-        } else if (primeiroNumero > segundoNumero && segundoNumero > terceiroNumero) {
-            System.out.println(primeiroNumero + " " + segundoNumero + " " + terceiroNumero);
-        } else if (primeiroNumero > segundoNumero && segundoNumero > terceiroNumero) {
-            System.out.println(segundoNumero + " " + terceiroNumero + " " + primeiroNumero);
+        } else if (segundoNumero > primeiroNumero && primeiroNumero > terceiroNumero) {
+            System.out.println(terceiroNumero + " " + primeiroNumero + " " + segundoNumero);
+        } else if (terceiroNumero > segundoNumero && primeiroNumero > terceiroNumero) {
+            System.out.println(segundoNumero + " " + primeiroNumero + " " + terceiroNumero);
+        } 
+        
+        
+        else if (terceiroNumero > segundoNumero && primeiroNumero > terceiroNumero) {
+            System.out.println(segundoNumero + " " + primeiroNumero + " " + terceiroNumero);
+        } else if (terceiroNumero > segundoNumero && primeiroNumero > terceiroNumero) {
+            System.out.println(segundoNumero + " " + primeiroNumero + " " + terceiroNumero);
+        } else if (terceiroNumero > segundoNumero && primeiroNumero > terceiroNumero) {
+            System.out.println(segundoNumero + " " + primeiroNumero + " " + terceiroNumero);
         }
     }
 
