@@ -14,12 +14,13 @@ public class EstruturaDecisaoIf {
         if (precoProduto >= 200) { // Se o Preço do Produto for Maior ou Igual a 200
             percentualDesconto = 10.0; // O Desconto Será de 10%
         }
-        if (precoProduto >= 100 && precoProduto<200) { //Se Valor do Produto For Igual ou Maior que 100 e Menor que 200
+        if (precoProduto >= 100 && precoProduto < 200) { // Se Valor do Produto For Igual ou Maior que 100 e Menor que
+                                                         // 200
             percentualDesconto = 5.0; // O Desconto sera de 5%
         }
         // Iniciar Regra de Três
-        double desconto = (precoProduto * percentualDesconto) / 100; //Valor do Desconto em R$
-        double precoComDesconto = precoProduto - desconto; //Valor Final em R$
-        System.out.println("O produto sairá por R$" + precoComDesconto); //Resposta final + Valor Final
+        double desconto = (precoProduto * percentualDesconto) / 100; // Valor do Desconto em R$
+        double precoComDesconto = precoProduto - desconto; // Valor Final em R$
+        System.out.println("O produto sairá por R$" + precoComDesconto); // Resposta final + Valor Final
     }
 }
