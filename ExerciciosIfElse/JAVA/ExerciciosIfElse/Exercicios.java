@@ -71,21 +71,18 @@ public class Exercicios {
         System.out.print("Informe o terceiro número:");
         double terceiroNumero = sc.nextDouble();
 
-        if (primeiroNumero > segundoNumero && segundoNumero > terceiroNumero) {
-            System.out.println(terceiroNumero + " " + segundoNumero + " " + primeiroNumero);
+           if (primeiroNumero > segundoNumero && segundoNumero > terceiroNumero) {
+            System.out.println(terceiroNumero + ", " + segundoNumero + ", " + primeiroNumero);
+        } else if (primeiroNumero > terceiroNumero && terceiroNumero > segundoNumero) {
+            System.out.println(segundoNumero + ", " + terceiroNumero + ", " + primeiroNumero);
         } else if (segundoNumero > primeiroNumero && primeiroNumero > terceiroNumero) {
-            System.out.println(terceiroNumero + " " + primeiroNumero + " " + segundoNumero);
-        } else if (terceiroNumero > segundoNumero && primeiroNumero > terceiroNumero) {
-            System.out.println(segundoNumero + " " + primeiroNumero + " " + terceiroNumero);
-        } 
-        
-        
-        else if (terceiroNumero > segundoNumero && primeiroNumero > terceiroNumero) {
-            System.out.println(segundoNumero + " " + primeiroNumero + " " + terceiroNumero);
-        } else if (terceiroNumero > segundoNumero && primeiroNumero > terceiroNumero) {
-            System.out.println(segundoNumero + " " + primeiroNumero + " " + terceiroNumero);
-        } else if (terceiroNumero > segundoNumero && primeiroNumero > terceiroNumero) {
-            System.out.println(segundoNumero + " " + primeiroNumero + " " + terceiroNumero);
+            System.out.println(terceiroNumero + ", " + primeiroNumero + ", " + segundoNumero);
+        } else if (segundoNumero > terceiroNumero && terceiroNumero > primeiroNumero) {
+            System.out.println(primeiroNumero + ", " + segundoNumero + ", " + terceiroNumero);
+        } else if (terceiroNumero > primeiroNumero && primeiroNumero > segundoNumero) {
+            System.out.println(segundoNumero + ", " + primeiroNumero + ", " + terceiroNumero);
+        } else if (terceiroNumero > segundoNumero && segundoNumero > primeiroNumero) {
+            System.println(primeiroNumero + ", " + segundoNumero + ", " + terceiroNumero);
         }
     }
 
