@@ -140,9 +140,13 @@ public class Exercicios {
         } else
             System.out.println("O Aluno Esta Reprovado no Curso");
         }
-    }
     public void exercicio08() {
         System.out.println("Informe um número e eu informarei se é impar ou par: ");
         double numero = sc.nextDouble();
-        if (numero)
+        double par = numero%2;
+        if (par == 0) {
+            System.out.println("O numero é par");
+        } else {}
+        System.out.println("O numero é impar");
+    }
     }
