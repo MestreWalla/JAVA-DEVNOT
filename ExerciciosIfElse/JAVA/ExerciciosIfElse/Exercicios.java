@@ -1,5 +1,6 @@
 package JAVA.ExerciciosIfElse;
 
+import java.time.format.TextStyle;
 import java.util.Scanner;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.SystemMenuBar;
@@ -71,7 +72,7 @@ public class Exercicios {
         System.out.print("Informe o terceiro número:");
         double terceiroNumero = sc.nextDouble();
 
-           if (primeiroNumero > segundoNumero && segundoNumero > terceiroNumero) {
+        if (primeiroNumero > segundoNumero && segundoNumero > terceiroNumero) {
             System.out.println(terceiroNumero + ", " + segundoNumero + ", " + primeiroNumero);
         } else if (primeiroNumero > terceiroNumero && terceiroNumero > segundoNumero) {
             System.out.println(segundoNumero + ", " + terceiroNumero + ", " + primeiroNumero);
@@ -93,12 +94,12 @@ public class Exercicios {
         double sexo = sc.nextDouble();
         String sexoWrite = "masculino";
         if (sexo == 1) {
-            sexoWrite = "masculino";
-        } else {
             sexoWrite = "feminino";
+        } else {
+            sexoWrite = "masculino";
         }
-        System.out.println("Você informou que sua altura é: " + altura + "m, e que você é do sexo " + sexoWrite
-                + ". Está correto? Informe com (1) para sim ou (2) para não");
+        System.out.println("Você informou que sua altura é: " + altura + "m, e que você é do sexo: " + sexoWrite
+                + ". Está correto? Informe com (1) para sim ou (2) para não: ");
         double correto = sc.nextDouble();
         double formulaHomens = (72.7 * altura) - 58;
         double formulaMulheres = (62.1 * altura) - 44.7;
@@ -115,7 +116,33 @@ public class Exercicios {
             System.out.println("Comece o programa novamente");
         }
     }
-}
-    public void exercicio07(); {
-      
-}
+
+    public void exercicio07() {
+        System.out.println("Informe a Nota 1 do aluno:");
+        int nota1 = sc.nextInt();
+        System.out.println("Informe a Nota 2 do aluno:");
+        int nota2 = sc.nextInt();
+        // double mediaAluno = (nota1 + nota2)/2;
+        double mediaAluno = (nota1+nota2)/2;
+        System.out.println("A media do Aluno é: " + mediaAluno);
+        if (mediaAluno >= 50) {
+            System.out.println("O Aluno Esta Aprovado por Nota, " + mediaAluno);
+        } else
+        System.out.println("O Aluno Esta Reprovado por Nota, " + mediaAluno);
+        System.out.println("Informe a Frequencia do Aluno:");
+        int frequenciaAluno = sc.nextInt();
+        if (frequenciaAluno >= 75) {
+            System.out.println("O Aluno Esta Aprovado por Frequência: " + frequenciaAluno);
+        } else
+            System.out.println("O Aluno esta Reprovado por Frequencia: " + frequenciaAluno);
+        if (frequenciaAluno >= 75 && mediaAluno >= 50) {
+            System.out.println("O Aluno esta Aprovado no Curso");
+        } else
+            System.out.println("O Aluno Esta Reprovado no Curso");
+        }
+    }
+    public void exercicio08() {
+        System.out.println("Informe um número e eu informarei se é impar ou par: ");
+        double numero = sc.nextDouble();
+        if (numero)
+    }
