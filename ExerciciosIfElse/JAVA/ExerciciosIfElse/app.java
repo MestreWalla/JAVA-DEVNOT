@@ -13,6 +13,9 @@ public class app {
 
         Exercicios obj4 = new Exercicios();
         obj4.exercicio04();
+        
+        exercicios obj5 = new Exerciocios();
+        obj5.exercicio05();
 
         Exercicios obj6 = new Exercicios();
         obj6.exercicio06();
