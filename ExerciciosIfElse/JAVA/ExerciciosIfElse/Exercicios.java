@@ -82,7 +82,7 @@ public class Exercicios {
         } else if (terceiroNumero > primeiroNumero && primeiroNumero > segundoNumero) {
             System.out.println(segundoNumero + ", " + primeiroNumero + ", " + terceiroNumero);
         } else if (terceiroNumero > segundoNumero && segundoNumero > primeiroNumero) {
-            System.println(primeiroNumero + ", " + segundoNumero + ", " + terceiroNumero);
+            System.out.println(primeiroNumero + ", " + segundoNumero + ", " + terceiroNumero);
         }
     }
 
