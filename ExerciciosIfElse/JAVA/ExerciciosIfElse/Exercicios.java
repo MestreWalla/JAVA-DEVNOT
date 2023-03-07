@@ -170,11 +170,21 @@ public class Exercicios {
             System.out.println("Você não passou.");
         }
     }
-}
 
-// 10- Faça um programa que verifique (usando if e else) se uma letra digitada é
-// vogal ou consoante.
-// *Difícil:
+    // 10- Faça um programa que verifique (usando if e else) se uma letra digitada é
+    // vogal ou consoante.
+    // *Difícil:
+    public void exercicio10() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Informe uma letra:");
+        char letra = sc.next().charAt(0);
+        if (letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u') {
+            System.out.println("A letra é vogal.");
+        } else {
+            System.out.println("A letra não é vogal.");
+        }
+    }
+}    
 
 // 11- Faça um programa que recebe o salário de um colaborador e o reajuste
 // segundo o seguinte critério, baseado no salário atual:
