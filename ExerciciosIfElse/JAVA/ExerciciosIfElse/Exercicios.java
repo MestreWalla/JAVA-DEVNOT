@@ -151,19 +151,26 @@ public class Exercicios {
             System.out.println("O numero é impar");
         }
     }
+    // 09- Desafio 1: Crie um programa que recebe uma nota ( pela classe Scanner) e
+    // checa se você passou direto, ficou de recuperação ou foi reprovado na
+    // matéria.
+    // A regra é a seguinte:
+    // Nota 7 ou mais: passou direto
+    // Entre 5 e 7: têm direito de fazer uma prova de recuperação
+    // Abaixo de 5: reprovado direto
+
     public void exercicio09() {
-        System.out.println("Informe a Nota 1 do aluno:");
+        System.out.println("Informe a Nota do aluno:");
         int nota = sc.nextInt();
+        if (nota >= 8) {
+            System.out.println("Você passou direto.");
+        } else if (nota >= 5 && nota <= 7) {
+            System.out.println("Você ficou de recuperação.");
+        } else if (nota <= 4) {
+            System.out.println("Você não passou.");
+        }
     }
 }
-
-// 09- Desafio 1: Crie um programa que recebe uma nota ( pela classe Scanner) e
-// checa se você passou direto, ficou de recuperação ou foi reprovado na
-// matéria.
-// A regra é a seguinte:
-// Nota 7 ou mais: passou direto
-// Entre 5 e 7: têm direito de fazer uma prova de recuperação
-// Abaixo de 5: reprovado direto
 
 // 10- Faça um programa que verifique (usando if e else) se uma letra digitada é
 // vogal ou consoante.
