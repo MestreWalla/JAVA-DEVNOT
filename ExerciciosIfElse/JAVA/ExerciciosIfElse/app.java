@@ -3,6 +3,9 @@ package JAVA.ExerciciosIfElse;
 import java.util.Scanner;
 
 public class app {
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Exercicios obj = new Exercicios();
@@ -16,6 +19,7 @@ public class app {
         System.out.println("6 - Exercício 06 - Calcular peso ideal com base em suas informações.");
         System.out.println("7 - Exercício 07 - Informar aprovação do aluno.");
         System.out.println("8 - Exercício 08 - Informar se o numero digitado é impar ou par.");
+        System.out.println("9 - Exercicio 09 - Ver se passou de ano");
 
         int escolha = scanner.nextInt();
 
@@ -43,6 +47,9 @@ public class app {
                 break;
             case 8:
                 obj.exercicio08();
+                break;
+            case 9:
+                obj.exercicio09();
                 break;
             default:
                 System.out.println("Opção inválida!");
