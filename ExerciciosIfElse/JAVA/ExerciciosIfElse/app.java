@@ -8,14 +8,14 @@ public class app {
         Exercicios obj = new Exercicios();
 
         System.out.println("Escolha o exercício que deseja executar:");
-        System.out.println("1 - Exercício 01");
-        System.out.println("2 - Exercício 02");
-        System.out.println("3 - Exercício 03");
-        System.out.println("4 - Exercício 04");
-        System.out.println("5 - Exercício 05");
-        System.out.println("6 - Exercício 06");
-        System.out.println("7 - Exercício 07");
-        System.out.println("8 - Exercício 08");
+        System.out.println("1 - Exercício 01 - Mostrar qual número é maior.");
+        System.out.println("2 - Exercício 02 - Mostrar se você ja pode votar.");
+        System.out.println("3 - Exercício 03 - Informar se senha esta correta ou não.");
+        System.out.println("4 - Exercício 04 - Calcular valor do produto com desconto ou não.");
+        System.out.println("5 - Exercício 05 - Ao informar 3 numeros, o sistema ira exibilos em ordem crescente.");
+        System.out.println("6 - Exercício 06 - Calcular peso ideal com base em suas informações.");
+        System.out.println("7 - Exercício 07 - Informar aprovação do aluno.");
+        System.out.println("8 - Exercício 08 - Informar se o numero digitado é impar ou par.");
 
         int escolha = scanner.nextInt();
 
