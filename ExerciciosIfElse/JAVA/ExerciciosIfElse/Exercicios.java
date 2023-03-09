@@ -174,6 +174,7 @@ public class Exercicios {
     // 10- Faça um programa que verifique (usando if e else) se uma letra digitada é
     // vogal ou consoante.
     // *Difícil:
+
     public void exercicio10() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Informe uma letra:");
@@ -184,20 +185,29 @@ public class Exercicios {
             System.out.println("A letra não é vogal.");
         }
     }
-}    
-
-// 11- Faça um programa que recebe o salário de um colaborador e o reajuste
-// segundo o seguinte critério, baseado no salário atual:
-// -Salários até R$ 1280,00 (incluindo): aumento de 20%;
-// -Salários entre R$ 1280,00 e R$1700,00: aumento de 15%;
-// -Salários entre R$ 1700,00 e R$ 2500,00: aumento de 10%;
-// -Salários de R$ 2500,00 em diante: aumento de 5%
-// Após o aumento ser realizado; informe na tela:
-// *O salário antes do reajuste;
-// *O percentual de aumento aplicado;
-// *O valor do aumento;
-// *O novo salário, após o aumento.
-
+    // 11- Faça um programa que recebe o salário de um colaborador e o reajuste
+    // segundo o seguinte critério, baseado no salário atual:
+    // -Salários até R$ 1280,00 (incluindo): aumento de 20%;
+    // -Salários entre R$ 1280,00 e R$1700,00: aumento de 15%;
+    // -Salários entre R$ 1700,00 e R$2500,00: aumento de 10%;
+    // -Salários de R$ 2500,00 em diante: aumento de 5%
+    // Após o aumento ser realizado; informe na tela:
+    // *O salário antes do reajuste;
+    // *O percentual de aumento aplicado;
+    // *O valor do aumento;
+    // *O novo salário, após o aumento.
+    public void exercicio11() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Informe o salário do colaborador:");
+        double salario = sc.nextDouble();
+        System.out.println("Informe a quantidade de horas trabalhadas no mês:");
+        int quantidadeHoras = sc.nextInt();
+        double salarioNovo = salario + (salario * 0.20);
+        double salarioAumento = salarioNovo + (salarioNovo * 0.15);
+        double salarioDesconto = salarioNovo - (salarioNovo * 0.20);
+        System.out.println("O salário antes do reajuste é: " + salario);
+        System.out.println("O percentual de aumento aplicado é: " + (salarioAumento - salario));
+}
 // 12- Faça um programa para o cálculo de uma folha de pagamento, sabendo que os
 // descontos são do imposto de Renda, que depende do salário bruto (conforme
 // tabela abaixo) e 3% para o Sindicato e que o FGTS corresponde a 11% do
@@ -218,3 +228,16 @@ public class Exercicios {
 // FGTS ( 11%) : R$ 121,00
 // Total de descontos : R$ 165,00
 // Salário Líquido : R$ 935,00
+    public void exercicio12() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Informe o valor da hora:");
+        double hora = sc.nextDouble();
+        System.out.println("Informe a quantidade de horas trabalhadas no mês:");
+        int quantidadeHoras = sc.nextInt();
+        double salarioBruto = hora * quantidadeHoras;
+        double salarioLiquido = salarioBruto - (salarioBruto * 0.11);
+        System.out.println("O salário líquido é: " + salarioLiquido);
+        System.out.println("O salário bruto é: " + salarioBruto);
+        System.out.println("Total de descontos: R$ " + (salarioLiquido - salarioBruto));
+    }
+}
