@@ -176,7 +176,6 @@ public class Exercicios {
     // *Difícil:
 
     public void exercicio10() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("Informe uma letra:");
         char letra = sc.next().charAt(0);
         if (letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u') {
@@ -185,6 +184,7 @@ public class Exercicios {
             System.out.println("A letra não é vogal.");
         }
     }
+
     // 11- Faça um programa que recebe o salário de um colaborador e o reajuste
     // segundo o seguinte critério, baseado no salário atual:
     // -Salários até R$ 1280,00 (incluindo): aumento de 20%;
@@ -207,27 +207,28 @@ public class Exercicios {
         double salarioDesconto = salarioNovo - (salarioNovo * 0.20);
         System.out.println("O salário antes do reajuste é: " + salario);
         System.out.println("O percentual de aumento aplicado é: " + (salarioAumento - salario));
-}
-// 12- Faça um programa para o cálculo de uma folha de pagamento, sabendo que os
-// descontos são do imposto de Renda, que depende do salário bruto (conforme
-// tabela abaixo) e 3% para o Sindicato e que o FGTS corresponde a 11% do
-// salário bruto, mas não é descontado (é a empresa que deposita.)
-// O salário líquido corresponde ao salário bruto menos os descontos O programa
-// deverá pedir ao usuário o valor da sua hora e a quantidade de horas
-// trabalhadas no mês.
-// a. Desconto do IR;
-// b. Salário Bruto até R$900,00 (inclusive) – Isento;
-// c. Salário Bruto de R$ 1500, 00 (inclusive) – desconto de 5%;
-// d. Salário bruto até R$ 2500,00 (Inclusive) – desconto de 10%;
-// e. Salário bruto acima de 2500 – Desconto de 20%.
-// Imprima na tela as informações, dispostas conforme o exemplo abaixo, no
-// exemplo valor da hora é 5 e a quantidade de horas é 220.
-// Salário bruto (5 * 220) : R$ 1100,00
-// ( – ) IR (5%) : R$ 55,00
-// ( – ) INSS ( 10% ) : R$ 110,00
-// FGTS ( 11%) : R$ 121,00
-// Total de descontos : R$ 165,00
-// Salário Líquido : R$ 935,00
+    }
+
+    // 12- Faça um programa para o cálculo de uma folha de pagamento, sabendo que os
+    // descontos são do imposto de Renda, que depende do salário bruto (conforme
+    // tabela abaixo) e 3% para o Sindicato e que o FGTS corresponde a 11% do
+    // salário bruto, mas não é descontado (é a empresa que deposita.)
+    // O salário líquido corresponde ao salário bruto menos os descontos O programa
+    // deverá pedir ao usuário o valor da sua hora e a quantidade de horas
+    // trabalhadas no mês.
+    // a. Desconto do IR;
+    // b. Salário Bruto até R$900,00 (inclusive) – Isento;
+    // c. Salário Bruto de R$ 1500, 00 (inclusive) – desconto de 5%;
+    // d. Salário bruto até R$ 2500,00 (Inclusive) – desconto de 10%;
+    // e. Salário bruto acima de 2500 – Desconto de 20%.
+    // Imprima na tela as informações, dispostas conforme o exemplo abaixo, no
+    // exemplo valor da hora é 5 e a quantidade de horas é 220.
+    // Salário bruto (5 * 220) : R$ 1100,00
+    // ( – ) IR (5%) : R$ 55,00
+    // ( – ) INSS ( 10% ) : R$ 110,00
+    // FGTS ( 11%) : R$ 121,00
+    // Total de descontos : R$ 165,00
+    // Salário Líquido : R$ 935,00
     public void exercicio12() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Informe o valor da hora:");
@@ -239,5 +240,84 @@ public class Exercicios {
         System.out.println("O salário líquido é: " + salarioLiquido);
         System.out.println("O salário bruto é: " + salarioBruto);
         System.out.println("Total de descontos: R$ " + (salarioLiquido - salarioBruto));
+    }
+
+    public void exercicio13() {
+        System.out.println("Digite uma letra:");
+        String letra = sc.nextLine().toLowerCase();
+        String tipoLetra;
+
+        switch (letra) {
+            case "a":
+                tipoLetra = " é uma vogal.";
+                break;
+            case "e":
+                tipoLetra = " é uma vogal.";
+                break;
+            case "i":
+                tipoLetra = " é uma vogal.";
+                break;
+            case "o":
+                tipoLetra = " é uma vogal.";
+                break;
+            case "u":
+                tipoLetra = " é uma vogal.";
+                break;
+            default:
+                tipoLetra = " é uma consoante.";
+        }
+        System.out.println("A letra " + letra + tipoLetra);
+    }
+
+    public void exercicio14() {
+        System.out.println("Digite o número do Mês: ");
+        int mes = sc.nextInt();
+        String mesEscolhido = ("janeiro");
+        switch (mes) {
+            case 1:
+                mesEscolhido = ("Janeiro");
+                break;
+            case 2:
+                mesEscolhido = ("Fevereiro");
+                break;
+            case 3:
+                mesEscolhido = ("Março");
+                break;
+            case 4:
+                mesEscolhido = ("Abril");
+                break;
+            case 5:
+                mesEscolhido = ("Maio");
+                break;
+            case 6:
+                mesEscolhido = ("Junho");
+                break;
+            case 7:
+                mesEscolhido = ("Julho");
+                break;
+            case 8:
+                mesEscolhido = ("Agosto");
+                break;
+            case 9:
+                mesEscolhido = ("Setembro");
+                break;
+            case 10:
+                mesEscolhido = ("Outubro");
+                break;
+            case 11:
+                mesEscolhido = ("Novembro");
+                break;
+            case 12:
+                mesEscolhido = ("Dezembro");
+                break;
+            default:
+                break;
+        }
+        if (mes == 1 || mes == 2 || mes == 3 || mes == 4 || mes == 5 || mes == 6 || mes == 7 || mes == 8 || mes == 9
+                || mes == 10 || mes == 11 || mes == 12) {
+            System.out.println("O número " + mes + " equivale ao mês de " + mesEscolhido);
+        } else {
+            System.out.println("Mês inválido");
+        }
     }
 }

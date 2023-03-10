@@ -23,6 +23,8 @@ public class app {
         System.out.println("10 - Exercicio 10 - Informar se a letra é vogal ou não.");
         System.out.println("11 - Exercicio 11 - .");
         System.out.println("12 - Exercicio 12 - .");
+        System.out.println("13 - Exercicio 13 - Consoante ou Vogal");
+        System.out.println("14 - Exercicio 14 - Numero do mês");
 
         int escolha = scanner.nextInt();
 
@@ -62,6 +64,12 @@ public class app {
                 break;
             case 12:
                 obj.exercicio12();
+                break;
+            case 13:
+                obj.exercicio13();
+                break;
+            case 14:
+                obj.exercicio14();
                 break;
             default:
                 System.out.println("Opção inválida!");
