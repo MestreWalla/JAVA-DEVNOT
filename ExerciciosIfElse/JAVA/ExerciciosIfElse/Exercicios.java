@@ -200,13 +200,16 @@ public class Exercicios {
         Scanner sc = new Scanner(System.in);
         System.out.println("Informe o salário do colaborador:");
         double salario = sc.nextDouble();
-        System.out.println("Informe a quantidade de horas trabalhadas no mês:");
-        int quantidadeHoras = sc.nextInt();
+        if (salario =< 1280) {
         double salarioNovo = salario + (salario * 0.20);
-        double salarioAumento = salarioNovo + (salarioNovo * 0.15);
+        } else if (salario => 1281 && salario =< 1700) {
+          double salarioAumento = salarioNovo + (salarioNovo * 0.15);
+        } else (salario => 1701) {
         double salarioDesconto = salarioNovo - (salarioNovo * 0.20);
-        System.out.println("O salário antes do reajuste é: " + salario);
-        System.out.println("O percentual de aumento aplicado é: " + (salarioAumento - salario));
+          
+        } System.out.println("O salário antes do reajuste é: R$" + salario);
+        System.out.println("O percentual de aumento aplicado é: R$" + (salarioAumento - salario);
+        System.out.println("O salário após o aumento é: R$")
     }
 
     // 12- Faça um programa para o cálculo de uma folha de pagamento, sabendo que os
