@@ -3,9 +3,7 @@ package JAVA.ExerciciosIfElse;
 import java.util.Scanner;
 
 public class app {
-    /**
-     * @param args
-     */
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Exercicios obj = new Exercicios();
