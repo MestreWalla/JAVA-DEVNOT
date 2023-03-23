@@ -54,7 +54,7 @@ public void calculoTrabalhista(){
     }
   }
 // 5. Ler 3 valores (considere que não serão informados valores iguais) e escrever o maior deles.
-public void valorMaior(){
+public void valorMaior2(){
   System.out.println("Digite 3 valores diferentes e informarei o maior deles.");
   System.out.println("Informe o primeiro valor:");
     int valorUm = sc.nextInt();

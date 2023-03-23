@@ -208,7 +208,7 @@ public class Exercicios {
         double salarioDesconto = salarioNovo - (salarioNovo * 0.20);
           
         } System.out.println("O salário antes do reajuste é: R$" + salario);
-        System.out.println("O percentual de aumento aplicado é: R$" + (salarioAumento - salario);
+        System.out.println("O percentual de aumento aplicado é: R$" + (salarioAumento - salario));
         System.out.println("O salário após o aumento é: R$")
     }
 
