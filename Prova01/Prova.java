@@ -1,9 +1,13 @@
 package JAVA.Prova01;
 
+import java.util.Scanner;
+import java.util.Random;
+
 public class Prova {
     Scanner sc = new Scanner(System.in);
+
     public void Situacao01() {
-        
+
         System.out.println("Digite o primeiro numero:");
         int primeiro = sc.nextInt();
         System.out.println("digite (1) para adição, (2) para subtração (3) para multiplicação (4) para Divisão.");
@@ -29,7 +33,7 @@ public class Prova {
         int matricula = sc.nextInt();
         // (Time do Chris, Time do Greg, Time do Caruso, Time do Jerome).
         Random rd = new Random();
-        int random = rd.nextInt(bound:4);
+        int random = rd.nextInt(4);
         int time = 0;
         if (time == 0) {
         System.out.println("Você esta registrado no time " + 0);
@@ -68,9 +72,9 @@ public class Prova {
                 default:
                 break;
         }
-        if (fruta01 == "Morangos" || fruta3 == "Maças" || fruta3 == "Bananas") {
+        if (fruta1 == "Morangos" || fruta1 == "Maças" || fruta1 == "Bananas") {
             System.out.println("A fruta escolhida foi " + fruta1 , "informe a quantidade em kilos:");
-            int kg01 = sc.nextInt();
+            double kg01 = sc.nextInt();
             System.out.println(fruta1 + kg01);
         } else {System.out.println("Seleção invalida.");}
         
@@ -94,9 +98,9 @@ public class Prova {
                 break;
         }
 
-        if (fruta2 == "Morangos" || fruta3 == "Maças" || fruta3 == "Bananas") {
+        if (fruta2 == "Morangos" || fruta2 == "Maças" || fruta2 == "Bananas") {
             System.out.println("A fruta escolhida foi " + fruta2 , "informe a quantidade em kilos:");
-            int kg02 = sc.nextInt();
+            double kg02 = sc.nextInt();
             System.out.println(fruta2 + kg02);
         } else {System.out.println("Seleção invalida.");}
         
@@ -122,7 +126,7 @@ public class Prova {
 
         if (fruta3 == "Morangos" || fruta3 == "Maças" || fruta3 == "Bananas") {
             System.out.println("A fruta escolhida foi " + fruta3 , "informe a quantidade em kilos:");
-            int kg02 = sc.nextInt();
+            double kg02 = sc.nextInt();
             System.out.println(fruta3 + kg03);
         } else {System.out.println("Seleção invalida.");}
 
@@ -131,25 +135,31 @@ public class Prova {
         double valorBanana = 1.3;
 
         if (selecao01 == 1) {
-            System.out.println(fruta1 + kg01 + "=" + valorMorango + (valorMorango+kg01));
-        } else if (selecao02 ==2) {
-            System.out.println(fruta2 + kg02 + "=" + valorMaca + (valorMaca+kg02));
+            System.out.println(fruta1 + kg01 + "=" + valorMorango + (valorMorango*kg01));
+        } else if (selecao02 == 2) {
+            System.out.println(fruta2 + kg02 + "=" + valorMaca + (valorMaca*kg02));
         } else {
-            System.out.println(fruta3 + kg03 + "=" + valorBanana + (valorBanana+kg03));
+            System.out.println(fruta3 + kg03 + "=" + valorBanana + (valorBanana*kg03));
         }
         if (selecao02 == 1) {
-            System.out.println(fruta1 + kg01 + "=" + valorMorango + (valorMorango+kg01));
-        } else if (selecao02 ==2) {
-            System.out.println(fruta2 + kg02 + "=" + valorMaca + (valorMaca+kg02));
+            System.out.println(fruta1 + kg01 + "=" + valorMorango + (valorMorango*kg01));
+        } else if (selecao02 == 2) {
+            System.out.println(fruta2 + kg02 + "=" + valorMaca + (valorMaca*kg02));
         } else {
-            System.out.println(fruta3 + kg03 + "=" + valorBanana + (valorBanana+kg03));
+            System.out.println(fruta3 + kg03 + "=" + valorBanana + (valorBanana*kg03));
         }
         if (selecao03 == 1) {
-            System.out.println(fruta1 + kg01 + "=" + valorMorango + (valorMorango+kg01));
-        } else if (selecao02 ==2) {
-            System.out.println(fruta2 + kg02 + "=" + valorMaca + (valorMaca+kg02));
+            System.out.println(fruta1 + kg01 + "=" + valorMorango + (valorMorango*kg01));
+        } else if (selecao02 == 2) {
+            System.out.println(fruta2 + kg02 + "=" + valorMaca + (valorMaca*kg02));
         } else {
-            System.out.println(fruta3 + kg03 + "=" + valorBanana + (valorBanana+kg03));
+            System.out.println(fruta3 + kg03 + "=" + valorBanana + (valorBanana*kg03));
         }
-    }
+        double valorTotal = (fruta2 * kg02)+(fruta1 * kg01)+(fruta3 * kg03);
+        if (valorTotal >= 25) {
+            int desconto = .1;
+        System.out.println("O valor total da compra é" + (valorTotal-(valorTotal*desconto)));
+    } else { System.out.println("O valor total da compra é" + valorTotal);
+}
+}
 }
