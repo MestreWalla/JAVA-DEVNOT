@@ -1,10 +1,18 @@
-package POOBanco06062023.Conta;
+package Semestre01.POOBanco06062023;
 
-public class ContaPf extends ContaParametros {
+public class Pessoa {
+    // Nome, CPF, Conta, idade
     private String nome;
     private String sobreNome;
     private String cpf;
     private int idade;
+
+    public Pessoa(String nome, String sobreNome, String cpf, int idade) {
+        this.nome = nome;
+        this.sobreNome = sobreNome;
+        this.cpf = cpf;
+        this.idade = idade;
+    }
 
     public String getNome() {
         return nome;
@@ -14,20 +22,20 @@ public class ContaPf extends ContaParametros {
         this.nome = nome;
     }
 
-    public String getSobreNome() {
-        return sobreNome;
-    }
-
-    public void setSobreNome(String sobreNome) {
-        this.sobreNome = sobreNome;
-    }
-
     public String getCpf() {
         return cpf;
     }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getSobreNome() {
+        return sobreNome;
+    }
+
+    public void setSobreNome(String sobreNome) {
+        this.sobreNome = sobreNome;
     }
 
     public int getIdade() {

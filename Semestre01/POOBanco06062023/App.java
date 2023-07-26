@@ -1,4 +1,4 @@
-package POOBanco06062023;
+package Semestre01.POOBanco06062023;
 
 import javax.swing.JOptionPane;
 
