@@ -40,12 +40,33 @@ public class App {
                                             animalCachorro[contC] = new Cachorro(null, null, acaoCadastro, null, null, null, null, null);
                                             animalCachorro[contC].setTipoAnimal(JOptionPane.showInputDialog("Informe o tipo:"));
                                             animalCachorro[contC].setNome(JOptionPane.showInputDialog("Informe o Nome do animal:"));
-                                            animalCachorro[contC].setEspecie(JOptionPane.showInputDialog("Informe a especie:"));
                                             animalCachorro[contC].setSexo(JOptionPane.showInputDialog("Informe o sexo:"));
                                             animalCachorro[contC].setRaca(JOptionPane.showInputDialog("Informe a Raça:"));
                                             animalCachorro[contC].setCorPredominante(JOptionPane.showInputDialog("Informe a cor predominante:"));
                                             animalCachorro[contC].setProprietario(JOptionPane.showInputDialog("Informe o proprietário:"));
                                         }
+                                    } else if (acao == 2) {
+                                        if (contG < animalGato.length) {
+                                            animalGato[contC] = new Gato(null, null, acaoCadastro, null, null, null, null, null);
+                                            animalGato[contC].setTipoAnimal(JOptionPane.showInputDialog("Informe o tipo:"));
+                                            animalGato[contC].setNome(JOptionPane.showInputDialog("Informe o Nome do animal:"));
+                                            animalGato[contC].setSexo(JOptionPane.showInputDialog("Informe o sexo:"));
+                                            animalGato[contC].setRaca(JOptionPane.showInputDialog("Informe a Raça:"));
+                                            animalGato[contC].setCorPredominante(JOptionPane.showInputDialog("Informe a cor predominante:"));
+                                            animalGato[contC].setProprietario(JOptionPane.showInputDialog("Informe o proprietário:"));
+                                        }
+                                    } else if (acao == 3) {
+                                        if (contG < animalOutros.length) {
+                                            animalOutros[contC] = new Outros(null, null, acaoCadastro, null, null, null, null);
+                                            animalOutros[contC].setTipoAnimal(JOptionPane.showInputDialog("Informe o tipo:"));
+                                            animalOutros[contC].setNome(JOptionPane.showInputDialog("Informe o Nome do animal:"));
+                                            animalOutros[contC].setSexo(JOptionPane.showInputDialog("Informe o sexo:"));
+                                            animalOutros[contC].setTipoAnimal(JOptionPane.showInputDialog("Informe tipo de animal:"));
+                                            animalOutros[contC].setEspecie(JOptionPane.showInputDialog("Informe a especie:"));
+                                            animalOutros[contC].setProprietario(JOptionPane.showInputDialog("Informe o proprietário:"));
+                                        }
+                                    } else if (acao == 4) {
+                                        cadastro = false;
                                     }
                 }
             } else if (acao == 2) { // Consultar Animal
