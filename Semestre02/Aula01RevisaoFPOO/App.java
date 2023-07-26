@@ -67,6 +67,7 @@ public class App {
                                         }
                                     } else if (acao == 4) {
                                         cadastro = false;
+                                        break;
                                     }
                 }
             } else if (acao == 2) { // Consultar Animal
