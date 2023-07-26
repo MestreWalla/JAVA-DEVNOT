@@ -35,40 +35,62 @@ public class App {
                                     + "\n 2-Cadastrar Gato"
                                     + "\n 3-Cadastrar Outro Especime"
                                     + "\n 4-Voltar"));
-                                    if (acao == 1) {
-                                        if (contC < animalCachorro.length) {
-                                            animalCachorro[contC] = new Cachorro(null, null, acaoCadastro, null, null, null, null, null);
-                                            animalCachorro[contC].setTipoAnimal(JOptionPane.showInputDialog("Informe o tipo:"));
-                                            animalCachorro[contC].setNome(JOptionPane.showInputDialog("Informe o Nome do animal:"));
-                                            animalCachorro[contC].setSexo(JOptionPane.showInputDialog("Informe o sexo:"));
-                                            animalCachorro[contC].setRaca(JOptionPane.showInputDialog("Informe a Raça:"));
-                                            animalCachorro[contC].setCorPredominante(JOptionPane.showInputDialog("Informe a cor predominante:"));
-                                            animalCachorro[contC].setProprietario(JOptionPane.showInputDialog("Informe o proprietário:"));
-                                        }
-                                    } else if (acao == 2) {
-                                        if (contG < animalGato.length) {
-                                            animalGato[contC] = new Gato(null, null, acaoCadastro, null, null, null, null, null);
-                                            animalGato[contC].setTipoAnimal(JOptionPane.showInputDialog("Informe o tipo:"));
-                                            animalGato[contC].setNome(JOptionPane.showInputDialog("Informe o Nome do animal:"));
-                                            animalGato[contC].setSexo(JOptionPane.showInputDialog("Informe o sexo:"));
-                                            animalGato[contC].setRaca(JOptionPane.showInputDialog("Informe a Raça:"));
-                                            animalGato[contC].setCorPredominante(JOptionPane.showInputDialog("Informe a cor predominante:"));
-                                            animalGato[contC].setProprietario(JOptionPane.showInputDialog("Informe o proprietário:"));
-                                        }
-                                    } else if (acao == 3) {
-                                        if (contG < animalOutros.length) {
-                                            animalOutros[contC] = new Outros(null, null, acaoCadastro, null, null, null, null);
-                                            animalOutros[contC].setTipoAnimal(JOptionPane.showInputDialog("Informe o tipo:"));
-                                            animalOutros[contC].setNome(JOptionPane.showInputDialog("Informe o Nome do animal:"));
-                                            animalOutros[contC].setSexo(JOptionPane.showInputDialog("Informe o sexo:"));
-                                            animalOutros[contC].setTipoAnimal(JOptionPane.showInputDialog("Informe tipo de animal:"));
-                                            animalOutros[contC].setEspecie(JOptionPane.showInputDialog("Informe a especie:"));
-                                            animalOutros[contC].setProprietario(JOptionPane.showInputDialog("Informe o proprietário:"));
-                                        }
-                                    } else if (acao == 4) {
-                                        cadastro = false;
-                                        break;
-                                    }
+                    if (acaoCadastro == 1) {
+                        if (contC < animalCachorro.length) {
+                            animalCachorro[contC] = new Cachorro(null, null, acaoCadastro, null, null, null, null,
+                                    null);
+                            animalCachorro[contC].setTipoAnimal(
+                                    JOptionPane.showInputDialog("\nCadatro de Cachorro" + "\nInforme o tipo:"));
+                            animalCachorro[contC].setNome(JOptionPane
+                                    .showInputDialog("\nCadatro de Cachorro" + "\nInforme o Nome do animal:"));
+                            animalCachorro[contC].setSexo(
+                                    JOptionPane.showInputDialog("\nCadatro de Cachorro" + "\nInforme o sexo:"));
+                            animalCachorro[contC].setRaca(
+                                    JOptionPane.showInputDialog("\nCadatro de Cachorro" + "\nInforme a Raça:"));
+                            animalCachorro[contC].setCorPredominante(JOptionPane
+                                    .showInputDialog("\nCadatro de Cachorro" + "\nInforme a cor predominante:"));
+                            animalCachorro[contC].setProprietario(
+                                    JOptionPane.showInputDialog("\nCadatro de Cachorro" + "\nInforme o proprietário:"));
+                                    contC++;
+                        }
+                    } else if (acaoCadastro == 2) {
+                        if (contG < animalGato.length) {
+                            animalGato[contC] = new Gato(null, null, acaoCadastro, null, null, null, null, null);
+                            animalGato[contC].setTipoAnimal(
+                                    JOptionPane.showInputDialog("\nCadatro de Gato" + "\nInforme o tipo:"));
+                            animalGato[contC].setNome(
+                                    JOptionPane.showInputDialog("\nCadatro de Gato" + "\nInforme o Nome do animal:"));
+                            animalGato[contC]
+                                    .setSexo(JOptionPane.showInputDialog("\nCadatro de Gato" + "\nInforme o sexo:"));
+                            animalGato[contC]
+                                    .setRaca(JOptionPane.showInputDialog("\nCadatro de Gato" + "\nInforme a Raça:"));
+                            animalGato[contC].setCorPredominante(
+                                    JOptionPane.showInputDialog("\nCadatro de Gato" + "\nInforme a cor predominante:"));
+                            animalGato[contC].setProprietario(
+                                    JOptionPane.showInputDialog("\nCadatro de Gato" + "\nInforme o proprietário:"));
+                                    contG++;
+                        }
+                    } else if (acaoCadastro == 3) {
+                        if (contO < animalOutros.length) {
+                            animalOutros[contC] = new Outros(null, null, acaoCadastro, null, null, null, null);
+                            animalOutros[contC].setTipoAnimal(
+                                    JOptionPane.showInputDialog("\nCadatro de Outro" + "\nInforme o tipo:"));
+                            animalOutros[contC].setNome(
+                                    JOptionPane.showInputDialog("\nCadatro de Outro" + "\nInforme o Nome do animal:"));
+                            animalOutros[contC]
+                                    .setSexo(JOptionPane.showInputDialog("\nCadatro de Outro" + "\nInforme o sexo:"));
+                            animalOutros[contC].setTipoAnimal(
+                                    JOptionPane.showInputDialog("\nCadatro de Outro" + "\nInforme tipo de animal:"));
+                            animalOutros[contC].setEspecie(
+                                    JOptionPane.showInputDialog("\nCadatro de Outro" + "\nInforme a especie:"));
+                            animalOutros[contC].setProprietario(
+                                    JOptionPane.showInputDialog("\nCadatro de Outro" + "\nInforme o proprietário:"));
+                                    contO++;
+                        }
+                    } else if (acaoCadastro == 4) {
+                        cadastro = false;
+                        break;
+                    }
                 }
             } else if (acao == 2) { // Consultar Animal
                 boolean consulta = true;
