@@ -19,7 +19,7 @@ public class App {
 
         while (menu) {
             int acao = Integer.parseInt(JOptionPane.showInputDialog(
-                    "\n-------------Bem vindo a Clinica My Pet*-------------"
+                    "\n-------------Bem vindo a Clinica My Pet-------------"
                             + "\nInforme a ação Desejada:"
                             + "\n 1-Cadastrar Animal"
                             + "\n 2-Consultar Animal"
@@ -29,7 +29,7 @@ public class App {
                 boolean cadastro = true;
                 while (cadastro) {
                     int acaoCadastro = Integer.parseInt(JOptionPane.showInputDialog(
-                            "\n-------------Clinica My Pet*-------------"
+                            "\n-------------Clinica My Pet-------------"
                                     + "\nInforme a ação Desejada:"
                                     + "\n 1-Cadastrar Cachorro"
                                     + "\n 2-Cadastrar Gato"
@@ -52,7 +52,7 @@ public class App {
                 boolean consulta = true;
                 while (consulta) {
                     int acaoConsulta = Integer.parseInt(JOptionPane.showInputDialog(
-                            "\n-------------Clinica My Pet*-------------"
+                            "\n-------------Clinica My Pet-------------"
                                     + "\nInforme a ação Desejada:"
                                     + "\n 1-Consultar Cachorro"
                                     + "\n 2-Consultar Gato"
