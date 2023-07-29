@@ -1,6 +1,8 @@
 package Semestre02.Aula01RevisaoFPOO.Cadastro;
 
-public abstract class Animal {
+import Semestre02.Aula01RevisaoFPOO.Agenda.Agenda;
+
+public abstract class Animal extends Agenda {
     // atributos
     String tipoAnimal;
     String nome;
@@ -10,16 +12,14 @@ public abstract class Animal {
 
     // métodos
     // construtor cheio
-    public Animal(String tipoAnimal, String nome, double peso, String especie, String sexo, String proprietario) {
+    public Animal(double data, String informaçoes, String tipoAnimal, String nome, double peso, String sexo,
+            String proprietario) {
+        super(data, informaçoes);
         this.tipoAnimal = tipoAnimal;
         this.nome = nome;
         this.peso = peso;
         this.sexo = sexo;
         this.proprietario = proprietario;
-    }
-
-    // construtor vazio
-    public Animal() {
     }
 
     // gets & sets
