@@ -1,4 +1,4 @@
-package JAVA.CalculadoraDescontos;
+package CalculadoraDescontos;
 
 /**
  * CalculadoraDescontos

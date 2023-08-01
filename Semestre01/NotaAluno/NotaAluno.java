@@ -1,4 +1,4 @@
-package JAVA.NotaAluno;
+package NotaAluno;
 
 import java.util.Scanner;
 

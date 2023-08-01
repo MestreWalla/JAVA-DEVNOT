@@ -1,4 +1,4 @@
-package JAVA.CalculadoraCustoViagem;
+package CalculadoraCustoViagem;
 
 /**
  * CalculadoraCustoViagem

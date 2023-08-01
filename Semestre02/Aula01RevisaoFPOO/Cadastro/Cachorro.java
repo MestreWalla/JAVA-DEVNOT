@@ -4,9 +4,9 @@ public class Cachorro extends Animal {
     String raca;
     String corPredominante;
 
-    public Cachorro(double data, String informaçoes, String tipoAnimal, String nome, double peso, String sexo,
+    public Cachorro(double data, double hora, String informaçoes, String tipoAnimal, String nome, double peso, String sexo,
             String proprietario, String raca, String corPredominante) {
-        super(data, informaçoes, tipoAnimal, nome, peso, sexo, proprietario);
+        super(data, hora, informaçoes, tipoAnimal, nome, peso, sexo, proprietario);
         this.raca = raca;
         this.corPredominante = corPredominante;
     }

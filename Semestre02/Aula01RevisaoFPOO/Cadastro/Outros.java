@@ -3,9 +3,9 @@ package Semestre02.Aula01RevisaoFPOO.Cadastro;
 public class Outros extends Animal {
     String especie;
 
-    public Outros(double data, String informaçoes, String tipoAnimal, String nome, double peso, String sexo,
+    public Outros(double data, double hora, String informaçoes, String tipoAnimal, String nome, double peso, String sexo,
             String proprietario, String especie) {
-        super(data, informaçoes, tipoAnimal, nome, peso, sexo, proprietario);
+        super(data, hora, informaçoes, tipoAnimal, nome, peso, sexo, proprietario);
         this.especie = especie;
     }
 

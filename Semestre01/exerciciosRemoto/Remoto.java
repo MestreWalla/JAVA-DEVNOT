@@ -19,8 +19,8 @@ public void calculoTrabalhista(){
   System.out.println("Qual o valor da sua hora?");
   int valor = sc.nextInt();
   int salario = horas*valor;
-  int salarioExtra = (horas-200)*(valor*0.50);
-  int salarioTotalEx = salario + salarioExtra;
+  double salarioExtra = (horas-200)*(valor*0.50);
+  double salarioTotalEx = salario + salarioExtra;
   if (horas >= 40){
     System.out.println("O valor a receber sera de R$" + salario);
   } else {System.out.println ("O valor a receber sera de R$" + salarioTotalEx);
@@ -49,8 +49,8 @@ public void calculoTrabalhista(){
     int saldoAtual = saldo - debito + credito;
     System.out.println("O saldo atual da conta é de R$" + saldoAtual);
     if (saldoAtual >= 0) {
-      System.out.println("Seu saldo é negativo")
-        } else {System.out.println("Seu saldo é positivo");
+      System.out.println("Seu saldo é negativo");
+        } else { System.out.println("Seu saldo é positivo");
     }
   }
 // 5. Ler 3 valores (considere que não serão informados valores iguais) e escrever o maior deles.
@@ -59,7 +59,7 @@ public void valorMaior2(){
   System.out.println("Informe o primeiro valor:");
     int valorUm = sc.nextInt();
   System.out.println("Informe o segundo valor:");
-    int valoDois = sc.nextInt();
+    int valorDois = sc.nextInt();
   System.out.println("Informe o terceiro valor:");
     int valorTres = sc.nextInt();
   if (valorUm >= valorDois && valorDois >= valorTres){
@@ -74,22 +74,22 @@ public void valorMaior2(){
     System.out.println("Informe quantos litros foram vendidos:");
     int litros = sc.nextInt();
     System.out.println("Informe o tipo de combustível digitando (1) para álcool e (2) para gasolina:");
-    int combustivel = sc.nextInt();
-    int valorG = 5.30;
-    int valorA = 3.9;
-    int valorC;
-    int desconto;
+    double combustivel = sc.nextInt();
+    double valorG = 5.30;
+    double valorA = 3.9;
+    double valorC;
+    double desconto;
     if (combustivel  == 1) {
       valorC = valorA;
     } else {valorC = valorG;
     }
-    if (combustível == 1 && litros >= 21) {
+    if (combustivel == 1 && litros >= 21) {
       desconto = 0.05;
-    } else if (combustível == 1 && litros <= 20) {
+    } else if (combustivel == 1 && litros <= 20) {
       desconto = 0.03;
-    } else if (combustível == 2 && litros >= 20) {
+    } else if (combustivel == 2 && litros >= 20) {
       desconto = 0.06;
-    } else if (combustível == 2 && litros <= 20) {
+    } else if (combustivel == 2 && litros <= 20) {
       desconto = 0.04;
     }
     

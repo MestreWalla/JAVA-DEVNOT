@@ -1,4 +1,4 @@
-package JAVA.EstruturaDecisaoIf;
+package EstruturaDecisaoIf;
 
 public class App {
     public static void main(String[] args) {

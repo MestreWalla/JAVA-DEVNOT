@@ -12,9 +12,9 @@ public abstract class Animal extends Agenda {
 
     // métodos
     // construtor cheio
-    public Animal(double data, String informaçoes, String tipoAnimal, String nome, double peso, String sexo,
+    public Animal(double data, double hora, String informaçoes, String tipoAnimal, String nome, double peso, String sexo,
             String proprietario) {
-        super(data, informaçoes);
+        super(data, hora, informaçoes);
         this.tipoAnimal = tipoAnimal;
         this.nome = nome;
         this.peso = peso;

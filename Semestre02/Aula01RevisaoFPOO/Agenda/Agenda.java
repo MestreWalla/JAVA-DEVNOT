@@ -4,11 +4,13 @@ import javax.swing.JOptionPane;
 
 public abstract class Agenda {
     double data; // dd/mm/aa
+    double hora; // hh:mm
     String informaçoes;
     
 
-    public Agenda(double data, String informaçoes) {
+    public Agenda(double data, double hora, String informaçoes) {
         this.data = data;
+        this.hora = hora;
         this.informaçoes = informaçoes;
     }
 
@@ -22,6 +24,14 @@ public abstract class Agenda {
         this.data = data;
     }
 
+    public double getHora() {
+        return hora;
+    }
+
+
+    public void setHora(double hora) {
+        this.hora = hora;
+    }
 
     public String getInformaçoes() {
         return informaçoes;
@@ -35,10 +45,12 @@ public abstract class Agenda {
 
     public void agendarConsulta() {
         double dataAgendar = Double.parseDouble(JOptionPane.showInputDialog("Informe a data a agendar"));
-        if (dataAgendar == data) {
+        double horaAgendar = Double.parseDouble(JOptionPane.showInputDialog("Informe a data a agendar"));
+        if (dataAgendar == data && horaAgendar == hora) {
             JOptionPane.showMessageDialog(null, "Dia cheio, marque outro dia");
         } else {
             data = dataAgendar;
+            hora = horaAgendar;
         }
     }
 }

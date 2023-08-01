@@ -1,4 +1,4 @@
-package JAVA.NotaAluno;
+package NotaAluno;
 
 public class App {
     public static void main(String[] args) {
