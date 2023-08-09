@@ -14,7 +14,7 @@ public class ExemploHashMap {
         // Imprimir chaves e os valores
         System.out.println(capitaisCidades.entrySet());
         System.out.println("===================================================");
-        // Criar Hash map com nome (chave) e idade (valor)
+        // Criar HashMap com nome (chave) e idade (valor)
         HashMap<String, Integer> nomesIdades = new HashMap<>();
         nomesIdades.put("Maria", 58);
         nomesIdades.put("Gabriela", 35);
