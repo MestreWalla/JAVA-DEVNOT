@@ -1,4 +1,4 @@
-package Semestre01.POOBanco06062023.Conta;
+package POOBanco06062023.Conta;
 
 public class ContaPJ extends ContaParametros {
     // atributos
