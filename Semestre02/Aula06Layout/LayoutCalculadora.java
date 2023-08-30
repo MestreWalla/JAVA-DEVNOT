@@ -12,8 +12,6 @@ public class LayoutCalculadora {
     public LayoutCalculadora() {
         // Construir o Layout de uma calculadora
         JFrame janelaP = new JFrame("Layout Calculadora");
-        // Mudando o Layout da Frame
-        BorderLayout border = new BorderLayout();
         JPanel painelV = new JPanel(); // Painel Visor
         JPanel painelB = new JPanel(); //Padrão Botoes
         janelaP.getContentPane().add(painelB, BorderLayout.CENTER);
