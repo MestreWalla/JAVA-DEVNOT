@@ -30,6 +30,8 @@ public class BoxLayoutExemplo extends JFrame {
             painel2.add(new JButton(""+i+1));
         }
         // Set do frame
-        
+        this.setDefaultCloseOperation(2);
+        this.pack();
+        this.setVisible(true);
     }
 }
