@@ -2,6 +2,7 @@ package Semestre02.Aula06Layout;
 
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -23,5 +24,12 @@ public class BoxLayoutExemplo extends JFrame {
         // Layout dos painéis
         painel1.setLayout(new BoxLayout(painel1, BoxLayout.Y_AXIS));
         painel2.setLayout(new BoxLayout(painel2, BoxLayout.X_AXIS));
+        // Adicionar elementos aos paineis
+        for (int i = 0; i < 5; i++) {
+            painel1.add(new JButton(""+i+1));
+            painel2.add(new JButton(""+i+1));
+        }
+        // Set do frame
+        
     }
 }
