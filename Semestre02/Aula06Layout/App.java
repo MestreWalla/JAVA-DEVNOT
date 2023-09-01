@@ -5,5 +5,6 @@ public class App {
         new LayoutCalculadora();
         new BorderLayoutExemplo();
         new BoxLayoutExemplo();
+        new FlowLayoutExemplo();
     }
 }
