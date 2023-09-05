@@ -17,9 +17,7 @@ public class CalculadoraCustoViagem extends JPanel {
         JPanel consumoVeiculo = new JPanel();
         JPanel distanciaTrajeto = new JPanel();
         this.add(valorCombustivel, BorderLayout.NORTH);
-        // this.add(new JButton("West"), BorderLayout.WEST);
         this.add(consumoVeiculo, BorderLayout.CENTER);
-        // this.add(new JButton("East"), BorderLayout.EAST);
         this.add(distanciaTrajeto, BorderLayout.SOUTH);
         
 
