@@ -1,58 +1,87 @@
-import java.awt.BorderLayout;
-
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CalculadoraCustoViagem extends JPanel {
+    private JTextField caixa1;
+    private JTextField caixa2;
+    private JTextField caixa3;
+    private JLabel resultadoLabel1;
+    private JLabel resultadoLabel2;
+
     public CalculadoraCustoViagem() {
-        super(); // Chama o construtor da classe pai JPanel.
-        this.add(new JLabel("Calculadora de Viagem")); // Adiciona um rótulo com o texto "Calculadora de Viagem" ao painel.
+        super(new BorderLayout());
 
-        // Mudando o Layout para BorderLayout do JFrame
-        BorderLayout border = new BorderLayout();
-        this.setLayout(border);
-        JPanel valorCombustivel = new JPanel();
-        JPanel consumoVeiculo = new JPanel();
-        JPanel distanciaTrajeto = new JPanel();
-        this.add(valorCombustivel, BorderLayout.NORTH);
-        this.add(consumoVeiculo, BorderLayout.CENTER);
-        this.add(distanciaTrajeto, BorderLayout.SOUTH);
-        
+        // Painel para os campos de entrada
+        JPanel inputPanel = new JPanel(new BorderLayout());
 
+        // Adicionar os Componentes ao inputPanel
+        JPanel labelsPanel = new JPanel(new BorderLayout());
+        JPanel fieldsPanel = new JPanel(new BorderLayout());
 
-        // Adicionar os Componentes
-        JLabel texto1 = new JLabel("Valor do Combustivel:"); // Cria um rótulo com o texto "Valor do Combustivel:".
-        this.add(texto1); // Adiciona o rótulo ao painel.
-        JTextField caixa1 = new JTextField(25); // Cria uma caixa de texto com espaço para 25 caracteres.
-        this.add(caixa1); // Adiciona a caixa de texto ao painel.
+        JLabel texto1 = new JLabel("Valor do Combustível:");
+        caixa1 = new JTextField(25);
 
-        JLabel texto2 = new JLabel("Consumo do veiculo:"); // Cria um rótulo com o texto "Consumo do veiculo:".
-        this.add(texto2); // Adiciona o rótulo ao painel.
-        JTextField caixa2 = new JTextField(25); // Cria uma caixa de texto com espaço para 25 caracteres.
-        this.add(caixa2); // Adiciona a caixa de texto ao painel.
+        JLabel texto2 = new JLabel("Consumo do Veículo:");
+        caixa2 = new JTextField(25);
 
-        JLabel Texto3 = new JLabel("Distancia do trajeto:"); // Cria um rótulo com o texto "Distancia do trajeto:".
-        this.add(Texto3); // Adiciona o rótulo ao painel.
-        JTextField caixa3 = new JTextField(25); // Cria uma caixa de texto com espaço para 25 caracteres.
-        this.add(caixa3); // Adiciona a caixa de texto ao painel.
+        JLabel Texto3 = new JLabel("Distância do Trajeto:");
+        caixa3 = new JTextField(25);
 
-        JButton botao1 = new JButton("Enviar"); // Cria um botão com o texto "Enviar".
-        this.add(botao1); // Adiciona o botão ao painel.
+        labelsPanel.add(texto1, BorderLayout.NORTH);
+        labelsPanel.add(texto2, BorderLayout.CENTER);
+        labelsPanel.add(Texto3, BorderLayout.SOUTH);
+
+        fieldsPanel.add(caixa1, BorderLayout.NORTH);
+        fieldsPanel.add(caixa2, BorderLayout.CENTER);
+        fieldsPanel.add(caixa3, BorderLayout.SOUTH);
+
+        inputPanel.add(labelsPanel, BorderLayout.WEST);
+        inputPanel.add(fieldsPanel, BorderLayout.CENTER);
+
+        // Adicionar o painel de entrada ao centro do CalculadoraCustoViagem
+        this.add(inputPanel, BorderLayout.CENTER);
+
+        // Botão para calcular
+        JButton botao1 = new JButton("Enviar");
+        this.add(botao1, BorderLayout.SOUTH);
+
+        resultadoLabel1 = new JLabel();
+        resultadoLabel2 = new JLabel();
 
         // Ação do botão
-        botao1.addActionListener(e -> {
-            int distancia = Integer.parseInt(caixa1.getText()); // Converte o conteúdo da caixa1 para um número inteiro (distância).
-            double consumo = Integer.parseInt(caixa2.getText()); // Converte o conteúdo da caixa2 para um número de ponto flutuante (consumo).
-            double valorCombustivel = Integer.parseInt(caixa3.getText()); // Converte o conteúdo da caixa3 para um número de ponto flutuante (valor do combustível).
-            double consumoCombustivel = distancia / consumo; // Calcula o consumo de combustível.
-            double custoViagem = consumoCombustivel * valorCombustivel; // Calcula o custo total da viagem.
-            
-            System.out.println("O combustivel gasto é de " + consumoCombustivel + " Litros"); // Exibe a quantidade de combustível gasta.
-            this.add(new JLabel("O combustivel gasto é de " + consumoCombustivel + " Litros")); // Exibe o resultado dentro da propria janela.
-            System.out.println("O custo total da viagem é de R$ " + custoViagem + "."); // Exibe o custo total da viagem.
-            this.add(new JLabel("O custo total da viagem é de R$ " + custoViagem + ".")); // Exibe o resultado dentro da propria janela.
+        botao1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calcularResultado();
+            }
         });
+    }
+
+    private void calcularResultado() {
+        try {
+            int distancia = Integer.parseInt(caixa1.getText());
+            double consumo = Double.parseDouble(caixa2.getText());
+            double valorCombustivelRS = Double.parseDouble(caixa3.getText());
+            double consumoCombustivel = distancia / consumo;
+            double custoViagem = consumoCombustivel * valorCombustivelRS;
+
+            resultadoLabel1.setText("O combustível gasto é de " + consumoCombustivel + " Litros");
+            resultadoLabel2.setText("O custo total da viagem é de R$ " + custoViagem);
+
+            // Adicionar os resultados abaixo do botão
+            this.add(resultadoLabel1, BorderLayout.SOUTH);
+            this.add(resultadoLabel2, BorderLayout.SOUTH);
+
+            // Atualizar a interface gráfica
+            this.revalidate();
+            this.repaint();
+        } catch (NumberFormatException ex) {
+            System.out.println("Erro de entrada inválida. Certifique-se de que todos os campos sejam preenchidos corretamente.");
+        }
     }
 }
