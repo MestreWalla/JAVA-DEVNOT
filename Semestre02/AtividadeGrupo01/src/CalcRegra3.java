@@ -1,3 +1,4 @@
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,90 +10,82 @@ import javax.swing.SwingConstants;
 
 public class CalcRegra3 extends JPanel {
 
-    // Construtor da classe CalcRegra3
+    // =========================Calculadora Regra de 3 =========================//
     public CalcRegra3() {
-        super(new BorderLayout()); // Cria um painel com layout de borda
-        
-        // Cria o painel principal que conterá todos os outros painéis
+        super(new BorderLayout());
+        // Criar Frame principal onde ficaram todos os outros JPanel
         JPanel frame = new JPanel(new BorderLayout());
-        
-        // Criação do primeiro painel superior
+        //
+        // ============================Painel superior (primeiropainel)================
+        //
         JPanel painel1 = new JPanel(new BorderLayout());
-        painel1.setBackground(Color.decode("#03dbfc")); // Define a cor de fundo
-        
-        // Criação da caixa de texto para inserir o primeiro valor
+        painel1.setBackground(Color.decode("#03dbfc"));
+        // criar caixa para inserir o primeiro valor
         JTextField campoTextoA = new JTextField("A", 25);
-        campoTextoA.setHorizontalAlignment(SwingConstants.CENTER); // Centraliza o texto na caixa
-        campoTextoA.setBackground(Color.decode("#127382")); // Define a cor de fundo da caixa
-        painel1.add(campoTextoA); // Adiciona a caixa ao painel
-        
-        // Criação do texto "Está para" entre os dois primeiros campos
+        campoTextoA.setHorizontalAlignment(SwingConstants.CENTER); // Centraliza o texto
+        campoTextoA.setBackground(Color.decode("#127382"));
+        this.add(campoTextoA);
+        // Texto para ficar entre os dois primeros campos
         JLabel texto1 = new JLabel("Está para");
-        painel1.add(texto1); // Adiciona o texto ao painel
-        
-        // Criação da caixa de texto para inserir o segundo valor
+        this.add(texto1);
+        // criar caixa para inserir o segundo valor
         JTextField campoTextoB = new JTextField("B", 25);
-        campoTextoB.setHorizontalAlignment(SwingConstants.CENTER); // Centraliza o texto na caixa
-        campoTextoB.setBackground(Color.decode("#127382")); // Define a cor de fundo da caixa
-        painel1.add(campoTextoB); // Adiciona a caixa ao painel
-        
-        // Criação do segundo painel intermediário com o texto "Assim Como"
-        JPanel painel2 = new JPanel(new BorderLayout());
-        painel2.setBackground(Color.decode("#03dbfc")); // Define a cor de fundo
+        campoTextoB.setHorizontalAlignment(SwingConstants.CENTER); // Centraliza o texto
+        campoTextoB.setBackground(Color.decode("#127382"));
+        painel1.add(campoTextoB);
+        //
+        // ========================Painel intermediario "Assim Como"==================
+        //
+        JPanel painel2 = new JPanel();
+        painel2.setBackground(Color.decode("#03dbfc"));
         JLabel texto2 = new JLabel("Assim Como");
-        painel2.add(texto2); // Adiciona o texto ao painel
-        
-        // Criação do terceiro painel inferior
-        JPanel painel3 = new JPanel(new BorderLayout());
-        painel3.setBackground(Color.decode("#03dbfc")); // Define a cor de fundo
-        
-        // Criação da caixa de texto para inserir o terceiro valor
+        painel2.add(texto2);
+        //
+        // =======================Painel inferior (terceiro painel)===================
+        //
+        JPanel painel3 = new JPanel();
+        painel3.setBackground(Color.decode("#03dbfc"));
+        // crir caixa para inserir o terceiro valor
         JTextField campoTextoC = new JTextField("C", 25);
-        campoTextoC.setHorizontalAlignment(SwingConstants.CENTER); // Centraliza o texto na caixa
-        campoTextoC.setBackground(Color.decode("#127382")); // Define a cor de fundo da caixa
-        painel3.add(campoTextoC); // Adiciona a caixa ao painel
-        
-        // Criação do texto "Está para" entre os dois últimos campos
+        campoTextoC.setHorizontalAlignment(SwingConstants.CENTER); // Centraliza o texto
+        campoTextoC.setBackground(Color.decode("#127382"));
+        painel3.add(campoTextoC);
+        // Texto para ficar entre os dois ultimos campos
         JLabel texto3 = new JLabel("Está para");
-        painel3.add(texto3); // Adiciona o texto ao painel
-        
-        // Criação do campo de resultado
+        painel3.add(texto3);
+        // ==============================Resultado
         JTextField resultado = new JTextField("Resultado");
-        resultado.setBackground(Color.decode("#a7e5eb")); // Define a cor de fundo
-        resultado.setEditable(false); // Impede a edição do campo pelo usuário
-        resultado.setPreferredSize(new Dimension(painel3.getPreferredSize().width, resultado.getPreferredSize().height));
+        resultado.setBackground(Color.decode("#a7e5eb"));
+        resultado.setEditable(false);
+        resultado
+                .setPreferredSize(new Dimension(painel3.getPreferredSize().width, resultado.getPreferredSize().height));
         resultado.setHorizontalAlignment(SwingConstants.CENTER); // Centraliza o texto
-        painel3.add(resultado); // Adiciona o campo de resultado ao painel
-        
-        // Criação do botão "Calcular"
+        painel3.add(resultado);
+        // Botão para realizar o cálculo
         JButton calcular = new JButton("Calcular");
-        calcular.setBackground(Color.decode("#127382")); // Define a cor de fundo do botão
-        painel3.add(calcular); // Adiciona o botão ao painel
-        
-        // Adiciona um ouvinte de ação ao botão "Calcular"
+        calcular.setBackground(Color.decode("#127382"));
+        painel3.add(calcular);
+        //
+        // ============================================================================
+        //
+        // ==========================Realizar os Calculos===============================
+        //  
+        //
         calcular.addActionListener(null); // Adiciona ação ao botão
-        calcular.addActionListener(e -> { // Define o que fazer quando o botão for selecionado
-            // Obtém os valores digitados nos campos de texto
+        calcular.addActionListener(e -> { // o que fazer quando o botaão for selecionado
+            // Pega os valores digitados
             double valorA = Double.parseDouble(campoTextoA.getText());
             double valorB = Double.parseDouble(campoTextoB.getText());
             double valorC = Double.parseDouble(campoTextoC.getText());
-            
-            // Realiza o cálculo da regra de três
+            // Realiza o cálculo
             double solucao = (valorC * valorB) / valorA;
-            
-            // Exibe o resultado no campo de resultado
+            // Exibe o resultado no JTextList solucao
             resultado.setText(Double.toString(solucao));
         });
-        
-        // Adiciona os painéis ao painel principal
         frame.add(painel1);
         frame.add(painel2);
         frame.add(painel3);
-        
-        // Define o tamanho do painel principal
         frame.setSize(310, 330);
-        
-        // Torna o painel principal visível
         frame.setVisible(true);
     }
 }

@@ -15,8 +15,6 @@ public class CalculadoraCustoViagem extends JPanel {
     public CalculadoraCustoViagem() {
         super(new BorderLayout());      // Configura o layout do painel principal
 
-        JPanel inputPanel = new JPanel(new BorderLayout()); // Cria um painel para organizar os campos de entrada (Valor do Combustível, Consumo do Veículo, Distância do Trajeto)
-
         JPanel labelsPanel = new JPanel(new BorderLayout());       // Subpainel para rótulos
         JLabel texto1 = new JLabel("Valor do Combustível:");  // Rótulo para o valor do combustível
         JLabel texto2 = new JLabel("Consumo do Veículo:");    // Rótulo para o consumo do veículo
@@ -33,11 +31,10 @@ public class CalculadoraCustoViagem extends JPanel {
         fieldsPanel.add(caixa2, BorderLayout.CENTER);         // Adiciona a caixa de texto do consumo do veículo ao painel de campos
         fieldsPanel.add(caixa3, BorderLayout.SOUTH);          // Adiciona a caixa de texto distância do trajeto ao painel de campos
 
+        JPanel inputPanel = new JPanel(new BorderLayout()); // Cria um painel para organizar os campos de entrada (Valor do Combustível, Consumo do Veículo, Distância do Trajeto)
         inputPanel.add(labelsPanel, BorderLayout.WEST);     // Adiciona o painel de rótulos à esquerda do painel de entrada
         inputPanel.add(fieldsPanel, BorderLayout.CENTER);   // Adiciona o painel de campos no centro do painel de entrada
-
-        // Adicionar o painel de entrada ao centro do CalculadoraCustoViagem
-        this.add(inputPanel, BorderLayout.CENTER);
+        this.add(inputPanel, BorderLayout.CENTER);          // Adicionar o painel de entrada ao centro do CalculadoraCustoViagem
 
         // Botão para calcular
         JButton botao1 = new JButton("Enviar");  // Cria um botão com o rótulo "Enviar"
