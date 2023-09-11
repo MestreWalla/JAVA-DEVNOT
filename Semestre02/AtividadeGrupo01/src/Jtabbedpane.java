@@ -5,7 +5,7 @@ public class Jtabbedpane extends JTabbedPane{
         super();
         this.add("Custo Viagem",new CalculadoraCustoViagem());
         this.add("IMC",new CalculadoraCustoViagem());
-        this.add("Outro",new CalculadoraCustoViagem());
+        this.add("Regra de tres",new CalcRegra3());
     }
 }
 
