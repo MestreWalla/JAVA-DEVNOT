@@ -32,14 +32,14 @@ public class CalcRegra3 extends JPanel {
         JTextField campoTextoB = new JTextField("B", 25);
         campoTextoB.setHorizontalAlignment(SwingConstants.CENTER); // Centraliza o texto
         campoTextoB.setBackground(Color.decode("#127382"));
-        painel1.add(campoTextoB);
+        this.add(campoTextoB);
         //
         // ========================Painel intermediario "Assim Como"==================
         //
         JPanel painel2 = new JPanel();
         painel2.setBackground(Color.decode("#03dbfc"));
         JLabel texto2 = new JLabel("Assim Como");
-        painel2.add(texto2);
+        this.add(texto2);
         //
         // =======================Painel inferior (terceiro painel)===================
         //
@@ -49,10 +49,10 @@ public class CalcRegra3 extends JPanel {
         JTextField campoTextoC = new JTextField("C", 25);
         campoTextoC.setHorizontalAlignment(SwingConstants.CENTER); // Centraliza o texto
         campoTextoC.setBackground(Color.decode("#127382"));
-        painel3.add(campoTextoC);
+        this.add(campoTextoC);
         // Texto para ficar entre os dois ultimos campos
         JLabel texto3 = new JLabel("Está para");
-        painel3.add(texto3);
+        this.add(texto3);
         // ==============================Resultado
         JTextField resultado = new JTextField("Resultado");
         resultado.setBackground(Color.decode("#a7e5eb"));
@@ -60,11 +60,11 @@ public class CalcRegra3 extends JPanel {
         resultado
                 .setPreferredSize(new Dimension(painel3.getPreferredSize().width, resultado.getPreferredSize().height));
         resultado.setHorizontalAlignment(SwingConstants.CENTER); // Centraliza o texto
-        painel3.add(resultado);
+        this.add(resultado);
         // Botão para realizar o cálculo
         JButton calcular = new JButton("Calcular");
         calcular.setBackground(Color.decode("#127382"));
-        painel3.add(calcular);
+        this.add(calcular);
         //
         // ============================================================================
         //
