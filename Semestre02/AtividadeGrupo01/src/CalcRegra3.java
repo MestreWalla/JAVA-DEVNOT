@@ -61,7 +61,8 @@ public class CalcRegra3 extends JPanel {
         painel3.add(resultado); // adiciona o resultado ao painel3
 
         JButton calcular = new JButton("Calcular"); // cria um botão para calcular
-        calcular.setBackground(Color.decode("#127382")); // muda a cor de funfo do botão
+        calcular.setBackground(Color.decode("#127382"));// Define a cor do botao para azul
+        calcular.setForeground(Color.WHITE);               // Define a cor do texto do botão para branco
         painel3.add(calcular); // adiciona o botão ap painel3
 
         calcular.addActionListener(e -> { // cria a acao do botão calcular
