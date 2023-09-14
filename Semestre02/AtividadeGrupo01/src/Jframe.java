@@ -5,7 +5,7 @@ import javax.swing.JFrame;
         super("Calculadoras");
         this.add(new Jtabbedpane());
         //set frame
-        this.setBounds(500, 250, 500, 500);
+        this.setBounds(500, 250, 500, 200);
         this.setVisible(true);
     }
 }
