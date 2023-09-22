@@ -8,4 +8,7 @@ import javax.swing.JFrame;
         this.setBounds(500, 250, 500, 200);
         this.setVisible(true);
     }
+
+    public Jframe(String string) {
+    }
 }
