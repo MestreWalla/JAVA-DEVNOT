@@ -1,10 +1,11 @@
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.*;
 
-public class ExemploCardLayout extends Jframe {
+public class ExemploCardLayout extends JFrame {
     //Construtor
     public ExemploCardLayout() {
         super("Exemplo CardLayout");
