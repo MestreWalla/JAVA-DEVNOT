@@ -1,9 +1,9 @@
-package Semestre01.POOBanco06062023;
+package POOBanco06062023;
 
 import javax.swing.JOptionPane;
 
-import Semestre01.POOBanco06062023.Conta.ContaPJ;
-import Semestre01.POOBanco06062023.Conta.ContaPf;
+import POOBanco06062023.Conta.ContaPJ;
+import POOBanco06062023.Conta.ContaPf;
 
 public class App {
     public static void main(String[] args) {

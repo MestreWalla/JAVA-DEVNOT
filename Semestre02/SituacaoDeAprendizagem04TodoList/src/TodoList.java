@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -32,7 +33,7 @@ public class TodoList extends JFrame {
         // Configuração da janela principal
         super("To-Do List App");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(400, 300);
+        this.setSize(500, 300);
         
         // Inicializa o painel principal
         mainPanel = new JPanel();
@@ -122,7 +123,15 @@ public class TodoList extends JFrame {
         // Exclui a task selecionada da lista de tasks
         int selectedIndex = taskList.getSelectedIndex();
         if (selectedIndex >= 0 && selectedIndex < tasks.size()) {
-            tasks.remove(selectedIndex);
+
+            Object[] options = {"   Sim   ", "   Não   "}; 
+            int n = JOptionPane.showOptionDialog(null," Deseja realmente excluir a tarefa?","Confirmar exclusão?", 
+            JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[1]);
+
+                if(n == 0){
+                    tasks.remove(selectedIndex);
+                    // System.exit(0); 
+                }
             updateTaskList();
         }
     }
@@ -140,6 +149,7 @@ public class TodoList extends JFrame {
     private void filterTasks() {
         // Filtra as tasks com base na seleção do JComboBox
         String filter = (String) filterComboBox.getSelectedItem();
+
         listModel.clear();
         for (Task task : tasks) {
             if (filter.equals("Todas") || (filter.equals("Ativas") &&
@@ -154,7 +164,14 @@ public class TodoList extends JFrame {
         List<Task> completedTasks = new ArrayList<>();
         for (Task task : tasks) {
             if (task.isDone()) {
-                completedTasks.add(task);
+            
+            Object[] options = {"   Sim   ", "   Não   "}; 
+            int n = JOptionPane.showOptionDialog(null," Deseja realmente excluir todas as tarefas concluidas?","Confirmar exclusão de concluido?", 
+            JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[1]);
+
+                if(n == 0){
+                    completedTasks.add(task);
+                }
             }
         }
         tasks.removeAll(completedTasks);
