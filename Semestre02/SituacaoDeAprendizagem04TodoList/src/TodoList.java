@@ -1,8 +1,9 @@
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,9 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
-import java.awt.*;
-
 public class TodoList extends JFrame {
+
     // atributos
     private JPanel mainPanel;
     private JTextField taskInputField;
@@ -37,6 +37,7 @@ public class TodoList extends JFrame {
         // Inicializa o painel principal
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
+
         // Inicializa a lista de tasks e a lista de tasks concluídas
         tasks = new ArrayList<>();
         listModel = new DefaultListModel<>();
@@ -47,21 +48,20 @@ public class TodoList extends JFrame {
         addButton = new JButton("Adicionar");
         deleteButton = new JButton("Excluir");
         markDoneButton = new JButton("Concluir");
-        filterComboBox = new JComboBox<>(new String[] { "Todas", "Ativas",
-                "Concluídas" });
+        filterComboBox = new JComboBox<>(new String[] { "Todas", "Ativas", "Concluídas" });
         clearCompletedButton = new JButton("Limpar Concluídas");
         
         // Configuração do painel de entrada
         JPanel inputPanel = new JPanel(new BorderLayout());
-        inputPanel.add(taskInputField, BorderLayout.CENTER);
-        inputPanel.add(addButton, BorderLayout.EAST);
+            inputPanel.add(taskInputField, BorderLayout.CENTER);
+            inputPanel.add(addButton, BorderLayout.EAST);
         
         // Configuração do painel de botões
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        buttonPanel.add(deleteButton);
-        buttonPanel.add(markDoneButton);
-        buttonPanel.add(filterComboBox);
-        buttonPanel.add(clearCompletedButton);
+            buttonPanel.add(deleteButton);
+            buttonPanel.add(markDoneButton);
+            buttonPanel.add(filterComboBox);
+            buttonPanel.add(clearCompletedButton);
         
         // Adiciona os componentes ao painel principal
         mainPanel.add(inputPanel, BorderLayout.NORTH);
@@ -72,6 +72,38 @@ public class TodoList extends JFrame {
         this.add(mainPanel);
 
         // Criar os Tratamentos de Eventos - Listener e eventos
+
+        // Ação dos botões
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addTask();
+            }
+        });
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deleteTask();
+            }
+        });
+        markDoneButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                markTaskDone();
+            }
+        });
+        clearCompletedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clearCompletedTasks();
+            }
+        });
+        filterComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filterTasks();
+            }
+        });
     }
 
     // Criar os metodos (CRUD)
