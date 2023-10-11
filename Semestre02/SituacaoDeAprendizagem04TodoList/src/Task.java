@@ -1,3 +1,5 @@
+import javax.swing.JButton;
+
 public class Task {
     String description;
     Boolean done;
@@ -18,6 +20,8 @@ public class Task {
     }
     public void setDone(Boolean done) {
         this.done = done;
+    }
+    public static void add(JButton deleteButton) {
     }
     
 }
