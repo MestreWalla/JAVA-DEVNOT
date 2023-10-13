@@ -56,15 +56,15 @@ public class TodoList extends JFrame {
 
         // Configuração do painel de entrada
         JPanel inputPanel = new JPanel(new BorderLayout());
-        inputPanel.add(taskInputField, BorderLayout.CENTER);
-        inputPanel.add(addButton, BorderLayout.EAST);
+            inputPanel.add(taskInputField, BorderLayout.CENTER);
+            inputPanel.add(addButton, BorderLayout.EAST);
 
         // Configuração do painel de botões
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        buttonPanel.add(deleteButton);
-        buttonPanel.add(markDoneButton);
-        buttonPanel.add(filterComboBox);
-        buttonPanel.add(clearCompletedButton);
+            buttonPanel.add(deleteButton);
+            buttonPanel.add(markDoneButton);
+            buttonPanel.add(filterComboBox);
+            buttonPanel.add(clearCompletedButton);
 
         // Adiciona os componentes ao painel principal
         mainPanel.add(inputPanel, BorderLayout.NORTH);
