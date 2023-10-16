@@ -23,8 +23,10 @@ public class TodoList extends JFrame {
 
     // atributos
     private JPanel mainPanel;
+    private JPanel tempPanel;
     private JTextField taskInputField;
     private JButton addButton;
+    private JButton addTimer;
     private JList<String> taskList;
     private DefaultListModel<String> listModel;
     private JButton deleteButton;
@@ -45,6 +47,10 @@ public class TodoList extends JFrame {
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());
 
+        // Inicializa o painel temporizador
+        tempPanel = new JPanel();
+        tempPanel.setLayout(new BorderLayout());
+
         // Inicializa a lista de tasks e a lista de tasks concluídas
         tasks = new ArrayList<>();
         listModel = new DefaultListModel<>();
@@ -53,6 +59,7 @@ public class TodoList extends JFrame {
         // Inicializa campos de entrada, botões e JComboBox
         taskInputField = new JTextField();
         addButton = new JButton("Adicionar");
+        addTimer = new JButton("Timer");
         deleteButton = new JButton("Excluir");
         markDoneButton = new JButton("Concluir");
         filterComboBox = new JComboBox<>(new String[] { "Todas", "Ativas", "Concluídas" });
@@ -62,6 +69,7 @@ public class TodoList extends JFrame {
         JPanel inputPanel = new JPanel(new BorderLayout());
         inputPanel.add(taskInputField, BorderLayout.CENTER);
         inputPanel.add(addButton, BorderLayout.EAST);
+        inputPanel.add(addTimer, BorderLayout.WEST);
 
         // Configuração do painel de botões
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));

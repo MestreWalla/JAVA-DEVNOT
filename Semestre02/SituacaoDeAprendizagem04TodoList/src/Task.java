@@ -4,7 +4,7 @@ public class Task {
     String description;
     Boolean done;
     // Construtor
-    public Task(String description, String string, int i, boolean b) {
+    public Task(String description) {
         this.description = description;
         this.done = false;
     }
