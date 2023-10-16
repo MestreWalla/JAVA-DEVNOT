@@ -4,7 +4,7 @@ public class Task {
     String description;
     Boolean done;
     // Construtor
-    public Task(String description) {
+    public Task(String description, String string, int i, boolean b) {
         this.description = description;
         this.done = false;
     }
@@ -22,6 +22,17 @@ public class Task {
         this.done = done;
     }
     public static void add(JButton deleteButton) {
+    }
+    public boolean isSelected() {
+        return false;
+    }
+    public String getTitle() {
+        return null;
+    }
+    public int getPriority() {
+        return 0;
+    }
+    public void setSelected(boolean b) {
     }
     
 }

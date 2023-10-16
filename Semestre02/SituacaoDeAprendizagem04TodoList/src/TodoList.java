@@ -15,6 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class TodoList extends JFrame {
 
@@ -36,6 +39,7 @@ public class TodoList extends JFrame {
         super("To-Do List App");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(500, 300);
+        AplicaNimbusLookAndFeel.pegaNimbus();
 
         // Inicializa o painel principal
         mainPanel = new JPanel();
@@ -56,15 +60,15 @@ public class TodoList extends JFrame {
 
         // Configuração do painel de entrada
         JPanel inputPanel = new JPanel(new BorderLayout());
-            inputPanel.add(taskInputField, BorderLayout.CENTER);
-            inputPanel.add(addButton, BorderLayout.EAST);
+        inputPanel.add(taskInputField, BorderLayout.CENTER);
+        inputPanel.add(addButton, BorderLayout.EAST);
 
         // Configuração do painel de botões
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-            buttonPanel.add(deleteButton);
-            buttonPanel.add(markDoneButton);
-            buttonPanel.add(filterComboBox);
-            buttonPanel.add(clearCompletedButton);
+        buttonPanel.add(deleteButton);
+        buttonPanel.add(markDoneButton);
+        buttonPanel.add(filterComboBox);
+        buttonPanel.add(clearCompletedButton);
 
         // Adiciona os componentes ao painel principal
         mainPanel.add(inputPanel, BorderLayout.NORTH);
@@ -130,7 +134,7 @@ public class TodoList extends JFrame {
     }
 
     // Criar os metodos (CRUD)
-    
+
     private void addTask() {
         // Adiciona uma nova task à lista de tasks
         String taskDescription = taskInputField.getText().trim();// remove espaços vazios
@@ -139,7 +143,7 @@ public class TodoList extends JFrame {
             tasks.add(newTask);
             updateTaskList();
             taskInputField.setText("");
-            
+
         }
     }
 
@@ -149,7 +153,7 @@ public class TodoList extends JFrame {
         if (selectedIndex >= 0 && selectedIndex < tasks.size()) {
             Object[] options = { "   Sim   ", "   Não   " };
             int n = JOptionPane.showOptionDialog(null, " Deseja realmente excluir a tarefa?", "Confirmar exclusão?",
-                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
             if (n == 0) {
                 tasks.remove(selectedIndex);
                 // System.exit(0);
@@ -189,7 +193,7 @@ public class TodoList extends JFrame {
                 Object[] options = { "   Sim   ", "   Não   " };
                 int n = JOptionPane.showOptionDialog(null, " Deseja realmente excluir todas as tarefas concluidas?",
                         "Confirmar exclusão de concluido?",
-                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[1]);
+                        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
 
                 if (n == 0) {
                     completedTasks.add(task);
@@ -212,5 +216,42 @@ public class TodoList extends JFrame {
     public void run() {
         // Exibe a janela
         this.setVisible(true);
+    }
+
+    // - Singleton para aplicação do Nimbus:
+    public class AplicaNimbusLookAndFeel {
+
+        private AplicaNimbusLookAndFeel() {
+        }
+
+        public static void pegaNimbus() {
+            try {
+                for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }
+            } catch (UnsupportedLookAndFeelException e) {
+
+                System.out.println("Erro: " + e.getMessage());
+                e.printStackTrace();
+
+            } catch (ClassNotFoundException e) {
+
+                System.out.println("Erro: " + e.getMessage());
+                e.printStackTrace();
+
+            } catch (InstantiationException e) {
+
+                System.out.println("Erro: " + e.getMessage());
+                e.printStackTrace();
+
+            } catch (IllegalAccessException e) {
+
+                System.out.println("Erro: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
     }
 }
