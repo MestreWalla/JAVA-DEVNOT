@@ -98,6 +98,7 @@ public class TodoList extends JFrame {
         deleteButton.setToolTipText("Excluir tarefa selecionada");
         markDoneButton.setToolTipText("Marcar tarefa selecionada como concluida");
         filterComboBox.setToolTipText("Mudar modo de exibição da lista entre as tarefas Ativas, Concluidas e Ativas");
+        clearCompletedButton.setToolTipText("Excluir todas as tarefas concluidas");
 
         // Configuração do painel de entrada
         JPanel inputPanel = new JPanel(new BorderLayout());
