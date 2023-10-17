@@ -76,9 +76,7 @@ public class TodoList extends JFrame {
 
         // Inicializa campos de entrada, botões e JComboBox
         taskInputField = new JTextField();
-        
-        taskInputField2 = new JTextField();
-        
+        taskInputField2 = new JTextField(); 
         addButton = new JButton("Adicionar");
         addButton2 = new JButton("Adicionar");
         addTimer = new JButton("Timer");
