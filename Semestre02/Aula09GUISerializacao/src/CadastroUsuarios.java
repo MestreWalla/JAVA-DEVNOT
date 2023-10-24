@@ -9,11 +9,13 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class CadastroUsuarios extends JFrame {
     // Atributos
+    private JPanel cards;
+    private CardLayout cl;
+    private JPanel cadastro;
+    private JPanel agenda;
     private JTextField inputNome;
     private JTextField inputIdade;
     private DefaultTableModel tableModel;
@@ -37,6 +39,7 @@ public class CadastroUsuarios extends JFrame {
         tableModel.addColumn("Nome");
         tableModel.addColumn("Idade");
         table = new JTable(tableModel);
+
         JScrollPane scrollPane = new JScrollPane(table);
 
         // Declaração dos componentes
@@ -47,21 +50,27 @@ public class CadastroUsuarios extends JFrame {
         JButton apagarButton = new JButton("Apagar");
         JButton apagarTodosButton = new JButton("Apagar Todos");
         JButton salvarButton = new JButton("Salvar");
+
         JPanel inputPanel = new JPanel();
-        inputPanel.add(new JLabel("Nome:"));
-        inputPanel.add(inputNome);
-        inputPanel.add(new JLabel("Idade:"));
-        inputPanel.add(inputIdade);
-        inputPanel.add(cadastrarButton);
-        inputPanel.add(atualizarButton);
-        inputPanel.add(apagarButton);
-        inputPanel.add(apagarTodosButton);
-        inputPanel.add(salvarButton);
+            inputPanel.add(new JLabel("Nome:"));
+            inputPanel.add(inputNome);
+            inputPanel.add(new JLabel("Idade:"));
+            inputPanel.add(inputIdade);
+            inputPanel.add(cadastrarButton);
+            inputPanel.add(atualizarButton);
+            inputPanel.add(apagarButton);
+            inputPanel.add(apagarTodosButton);
+            inputPanel.add(salvarButton);
 
         // Set do layout
+        cl = new CardLayout(); // criar o objeto do cardLayout
+        cards = new JPanel(cl);
+        add(cards, BorderLayout.NORTH);
         setLayout(new BorderLayout());
-        add(inputPanel, BorderLayout.NORTH);
-        add(scrollPane, BorderLayout.CENTER);
+        cadastro = new JPanel();
+        agenda = new JPanel();
+        cadastro.add(inputPanel, BorderLayout.NORTH);
+        cadastro.add(scrollPane, BorderLayout.CENTER);
 
         File arquivo = new File("dados.txt");
         if (arquivo.exists()) {
