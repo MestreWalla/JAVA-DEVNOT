@@ -4,6 +4,7 @@ public class Usuario implements Serializable {
     // Atributos
     private String nome;
     private int idade;
+    
     // Metodos
     public Usuario(String nome, int idade) {
         this.nome = nome;
