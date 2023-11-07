@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
 
+// MAVEN permite usar dependencias
+
 public class Main {
     public static void main(String[] args) throws Exception {
         try {
             Statement s; // Cria uma instância de Statement para executar comandos SQL.
-            String usuario = "postgres"; // Nome de usuário do banco de dados.
-            String senha = "postgres"; // Senha do banco de dados.
+            String usuario = "postgres"; // Nome de administrador do banco de dados.
+            String senha = "postgres"; // Senha de administrador do banco de dados.
             String url = "jdbc:postgresql://localhost:5432/postgres"; // URL de conexão com o banco de dados PostgreSQL.
 
             // Estabelece a conexão com o banco de dados.

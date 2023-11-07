@@ -1,6 +1,8 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.Statement; // para interpretar codigos SQL
+
+// JDBC (Java Data Base Connection)
 
 public class App {
     public static void main(String[] args) throws Exception {
