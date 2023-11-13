@@ -11,6 +11,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import Controller.CarrosControl;
 import Controller.CarrosDAO;
 
 import java.awt.GridLayout;
@@ -18,6 +19,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import Model.Carros;
+import javafx.event.ActionEvent;
 
 public class CarrosPainel extends JPanel {
     // Atributos(componentes)
@@ -85,7 +87,40 @@ public class CarrosPainel extends JPanel {
                 }
             }
         });
-        // Tratamento de eventos
+       
+        // Cria um objeto operacoes da classe CarrosControl para executar operações no banco de dados
+        CarrosControl operacoes = new CarrosControl(carros, tableModel, table);
+        
+        // Configura a ação do botão "cadastrar" para adicionar um novo registro no banco de dados
+
+        cadastrar.addActionListener(e->{
+            operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(), carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
+            carMarcaField.setText("");
+            carModeloField.setText("");
+            carAnoField.setText("");
+            carAnoField.setText("");
+            carValorField.setText("");
+        });
+
+        // Tratamento do botao editar
+        editar.addActionListener(e->{
+            operacoes.atualizar(carMarcaField.getText(), carModeloField.getText(), carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
+            carMarcaField.setText("");
+            carModeloField.setText("");
+            carAnoField.setText("");
+            carAnoField.setText("");
+            carValorField.setText("");
+        });
+
+        // Tratamento do botao apagar
+        apagar.addActionListener(e->{
+            operacoes.apagar(carPlacaField.getText());
+            carMarcaField.setText("");
+            carModeloField.setText("");
+            carAnoField.setText("");
+            carAnoField.setText("");
+            carValorField.setText("");
+        });
     }
 
     // Metodos (Atualizar tabela)
