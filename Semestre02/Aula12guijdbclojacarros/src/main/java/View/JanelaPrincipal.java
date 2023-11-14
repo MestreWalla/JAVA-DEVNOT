@@ -10,10 +10,20 @@ public class JanelaPrincipal extends JFrame {
     public JanelaPrincipal() {
         jTPane = new JTabbedPane();
         add(jTPane);
+
         // criandos as tabs
-        // tab1 carros
+        // Tab01: Carros
         CarrosPainel tab1 = new CarrosPainel();
         jTPane.add("Carros", tab1);
+
+        // Tab02: Clientes
+        ClientesPainel tab2 = new ClientesPainel();
+        jTPane.add("Clientes", tab2);
+
+        // Tab03: Venda de Carros
+        VendaCarrosPainel tab3 = new VendaCarrosPainel();
+        // jTPane.add("Venda de Carros", tab3);
+
         setBounds(100, 100, 600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -21,5 +31,10 @@ public class JanelaPrincipal extends JFrame {
     // métodos para tornar a janela visível
     public void run() {
         this.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        JanelaPrincipal janela = new JanelaPrincipal();
+        janela.run();
     }
 }

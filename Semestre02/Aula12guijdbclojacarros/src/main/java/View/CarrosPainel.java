@@ -1,6 +1,7 @@
 package View;
 
 import java.util.List;
+import java.util.Locale;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -10,6 +11,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 import Controller.CarrosControl;
 import Controller.CarrosDAO;
@@ -17,9 +19,9 @@ import Controller.CarrosDAO;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.NumberFormat;
 
 import Model.Carros;
-import javafx.event.ActionEvent;
 
 public class CarrosPainel extends JPanel {
     // Atributos(componentes)
@@ -60,6 +62,12 @@ public class CarrosPainel extends JPanel {
         botoes.add(editar = new JButton("Editar"));
         botoes.add(apagar = new JButton("Apagar"));
         add(botoes);
+
+        // Dicas de uso
+        cadastrar.setToolTipText("Cadastrar novo carro");
+        editar.setToolTipText("Editar registro selecionado");
+        apagar.setToolTipText("Apagar registro selecionado");
+
         // tabela de carros
         JScrollPane jSPane = new JScrollPane();
         add(jSPane);
@@ -87,38 +95,74 @@ public class CarrosPainel extends JPanel {
                 }
             }
         });
-       
-        // Cria um objeto operacoes da classe CarrosControl para executar operações no banco de dados
-        CarrosControl operacoes = new CarrosControl(carros, tableModel, table);
-        
-        // Configura a ação do botão "cadastrar" para adicionar um novo registro no banco de dados
 
-        cadastrar.addActionListener(e->{
-            operacoes.cadastrar(carMarcaField.getText(), carModeloField.getText(), carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
-            carMarcaField.setText("");
-            carModeloField.setText("");
-            carAnoField.setText("");
-            carAnoField.setText("");
-            carValorField.setText("");
+        // Cria um objeto operacoes da classe CarrosControl para executar operações no
+        // banco de dados
+        CarrosControl operacoes = new CarrosControl(carros, tableModel, table);
+
+        // Configura a ação do botão "cadastrar" para adicionar um novo registro no
+        // banco de dados
+
+        cadastrar.addActionListener(e -> {
+            String marca = carMarcaField.getText();
+            String modelo = carModeloField.getText();
+            String anoStr = carAnoField.getText();
+            String placa = carPlacaField.getText();
+            String valorStr = carValorField.getText();
+
+            // Verifica se os campos obrigatórios não estão vazios
+            if (marca.isEmpty() || modelo.isEmpty() || anoStr.isEmpty() || placa.isEmpty() || valorStr.isEmpty()) {
+                // Exibe uma mensagem de erro ao usuário
+                JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios.", "Erro de Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            try {
+                // Converte o ano para inteiro
+                int ano = Integer.parseInt(anoStr);
+
+                // Converte o valor para double
+                double valor = Double.parseDouble(valorStr);
+
+                // Agora você pode chamar o método cadastrar com os dados válidos
+                operacoes.cadastrar(marca, modelo, Integer.toString(ano), placa, Double.toString(valor));
+
+                // Limpa os campos após o cadastro bem-sucedido
+                carMarcaField.setText("");
+                carModeloField.setText("");
+                carAnoField.setText("");
+                carPlacaField.setText("");
+                carValorField.setText("");
+            } catch (NumberFormatException ex) {
+                // Exibe uma mensagem de erro ao usuário se houver problemas na conversão
+                JOptionPane.showMessageDialog(this, "Ano e Valor devem ser números válidos.", "Erro de Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         // Tratamento do botao editar
-        editar.addActionListener(e->{
-            operacoes.atualizar(carMarcaField.getText(), carModeloField.getText(), carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
+        editar.addActionListener(e -> {
+            operacoes.atualizar(carMarcaField.getText(), carModeloField.getText(),
+                    carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
+
+            // Limpa os campos após a atualização, independentemente do sucesso ou falha
             carMarcaField.setText("");
             carModeloField.setText("");
             carAnoField.setText("");
-            carAnoField.setText("");
+            carPlacaField.setText("");
             carValorField.setText("");
         });
 
         // Tratamento do botao apagar
-        apagar.addActionListener(e->{
+        apagar.addActionListener(e -> {
             operacoes.apagar(carPlacaField.getText());
+
+            // Limpa os campos após a exclusão, independentemente do sucesso ou falha
             carMarcaField.setText("");
             carModeloField.setText("");
             carAnoField.setText("");
-            carAnoField.setText("");
+            carPlacaField.setText("");
             carValorField.setText("");
         });
     }
@@ -129,10 +173,19 @@ public class CarrosPainel extends JPanel {
         tableModel.setRowCount(0); // Limpa todas as linhas existentes na tabela
         carros = new CarrosDAO().listarTodos();
         // Obtém os carros atualizados do banco de dados
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
         for (Carros carro : carros) {
+            // Formata o valor como moeda
+            String valorFormatado = currencyFormat.format(Double.parseDouble(carro.getValor()));
+
             // Adiciona os dados de cada carro como uma nova linha na tabela Swing
-            tableModel.addRow(new Object[] { carro.getMarca(), carro.getModelo(),
-                    carro.getAno(), carro.getPlaca(), carro.getValor() });
+            tableModel.addRow(new Object[] {
+                    carro.getMarca(),
+                    carro.getModelo(),
+                    carro.getAno(),
+                    carro.getPlaca(),
+                    valorFormatado // Adiciona o valor formatado como moeda
+            });
         }
     }
 }
