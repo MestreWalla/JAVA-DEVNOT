@@ -97,10 +97,12 @@ public class CarrosPainel extends JPanel {
             }
         });
 
-        // Cria um objeto operacoes da classe CarrosControl para executar operações no banco de dados
+        // Cria um objeto operacoes da classe CarrosControl para executar operações no
+        // banco de dados
         CarrosControl operacoes = new CarrosControl(carros, tableModel, table);
 
-        // Configura a ação do botão "cadastrar" para adicionar um novo registro no banco de dados
+        // Configura a ação do botão "cadastrar" para adicionar um novo registro no
+        // banco de dados
 
         cadastrar.addActionListener(e -> {
             String marca = carMarcaField.getText();

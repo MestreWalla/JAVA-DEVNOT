@@ -10,7 +10,6 @@ import Model.Clientes;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClientesPainel extends JPanel {
@@ -68,7 +67,7 @@ public class ClientesPainel extends JPanel {
         JScrollPane jSPane = new JScrollPane();
         add(jSPane);
         tableModel = new DefaultTableModel(new Object[][] {},
-                new String[] { "Nome", "CPF", "Telefone", "Email" });
+                new String[] { "Nome", "CPF", "Telefone", "Email", "Endereco" });
         table = new JTable(tableModel);
         jSPane.setViewportView(table);
 
@@ -93,9 +92,9 @@ public class ClientesPainel extends JPanel {
             }
         });
 
-        // Cria um objeto operacoes da classe ClientesControl para executar operações no
+        // Cria um objeto operacoes da classe CarrosControl para executar operações no
         // banco de dados
-        // ClientesControl operacoes = new ClientesControl(clientes, tableModel, table);
+        ClientesControl operacoes = new ClientesControl(clientes, tableModel, table);
 
         // Tratamento do botão "Cadastrar"
         cadastrar.addActionListener(e -> {
@@ -116,12 +115,7 @@ public class ClientesPainel extends JPanel {
 
             try {
                 int cpfInt = Integer.parseInt(cpf); // Converte o cpf para inteiro
-                int telefoneInt = Integer.parseInt(telefone); // Converte o telefone para double
-
-                // Inicialize a lista de clientes antes de passá-la para o construtor
-                clientes = new ArrayList<>();
-                // Passa a lista para o construtor de ClientesControl
-                ClientesControl operacoes = new ClientesControl(clientes, tableModel, table);
+                int telefoneInt = Integer.parseInt(telefone); // Converte o telefone para inteiro
 
                 // Chama o método cadastrar com os dados válidos
                 operacoes.cadastrar(Integer.toString(cpfInt), Double.toString(telefoneInt), endereco, endereco,
@@ -145,20 +139,22 @@ public class ClientesPainel extends JPanel {
 
         // Tratamento do botão "Editar"
         editar.addActionListener(e -> {
-            // Adicione aqui o código para editar o cliente
-            // ...
-            // Limpe os campos após a edição, independentemente do sucesso ou falha
             nomeField.setText("");
-            // Limpe os outros campos...
+            cpfField.setText("");
+            telefoneField.setText("");
+            emailField.setText("");
+            enderecoField.setText("");
         });
 
         // Tratamento do botão "Apagar"
         apagar.addActionListener(e -> {
-            // Adicione aqui o código para apagar o cliente
-            // ...
-            // Limpe os campos após a exclusão, independentemente do sucesso ou falha
+            operacoes.apagar(cpfField.getText());
+            // Limpa os campos após a exclusão, independentemente do sucesso ou falha
             nomeField.setText("");
-            // Limpe os outros campos...
+            cpfField.setText("");
+            telefoneField.setText("");
+            emailField.setText("");
+            enderecoField.setText("");
         });
     }
 

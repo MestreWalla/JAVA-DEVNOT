@@ -28,7 +28,7 @@ public class ClientesControl {
         atualizarTabela(); // Atualiza a tabela de exibição após a atualização
     }
 
-    public void apagar(String nome, String cpf, String telefone, String email, String endereco) {
+    public void apagar(String cpf) {
         new ClientesDAO().apagar(cpf);
         // Atualiza a tabela após a exclusão
         atualizarTabela();
