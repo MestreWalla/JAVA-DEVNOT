@@ -147,8 +147,9 @@ public class ClientesPainel extends JPanel {
 
         // Tratamento do botão "Apagar"
         apagar.addActionListener(e -> {
-            operacoes.apagar(cpfField.getText());
+            
             // Limpa os campos após a exclusão, independentemente do sucesso ou falha
+            operacoes.apagar(cpfField.getText());
             nomeField.setText("");
             cpfField.setText("");
             telefoneField.setText("");
