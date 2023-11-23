@@ -10,6 +10,7 @@ import Model.Clientes;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientesPainel extends JPanel {
@@ -58,7 +59,7 @@ public class ClientesPainel extends JPanel {
         add(botoes);
 
         // Dicas de uso
-        cadastrar.setToolTipText("Cadastrar novo carro");
+        cadastrar.setToolTipText("Cadastrar novo cliente");
         editar.setToolTipText("Editar registro selecionado");
         apagar.setToolTipText("Apagar registro selecionado");
 
@@ -66,11 +67,14 @@ public class ClientesPainel extends JPanel {
 
         JScrollPane jSPane = new JScrollPane();
         add(jSPane);
-        tableModel = new DefaultTableModel(new Object[][] {}, new String[] { "Nome", "CPF", "Telefone", "Email" });
+        tableModel = new DefaultTableModel(new Object[][] {},
+                new String[] { "Nome", "CPF", "Telefone", "Email" });
         table = new JTable(tableModel);
         jSPane.setViewportView(table);
 
+        // Criar banco de dados caso nao exista
         new ClientesDAO().criaTabela();
+        // Inclusao de elementos do banco na criação do painel
         atualizarTabela();
 
         // Tratamento de eventos na tabela
@@ -81,22 +85,62 @@ public class ClientesPainel extends JPanel {
                 if (linhaSelecionada != -1) {
                     // Preencha os campos de texto com os dados da linha selecionada
                     nomeField.setText((String) table.getValueAt(linhaSelecionada, 0));
-                    // Preencha os outros campos...
+                    cpfField.setText((String) table.getValueAt(linhaSelecionada, 1));
+                    telefoneField.setText((String) table.getValueAt(linhaSelecionada, 2));
+                    emailField.setText((String) table.getValueAt(linhaSelecionada, 3));
+                    enderecoField.setText((String) table.getValueAt(linhaSelecionada, 4));
                 }
             }
         });
 
         // Cria um objeto operacoes da classe ClientesControl para executar operações no
         // banco de dados
-        ClientesControl operacoes = new ClientesControl(clientes, tableModel, table);
+        // ClientesControl operacoes = new ClientesControl(clientes, tableModel, table);
 
         // Tratamento do botão "Cadastrar"
         cadastrar.addActionListener(e -> {
-            // Adicione aqui o código para cadastrar um novo cliente
-            // ...
-            // Limpe os campos após o cadastro bem-sucedido
+            // Código para cadastrar um novo cliente
+            String nome = nomeField.getText();
+            String cpf = cpfField.getText();
+            String telefone = telefoneField.getText();
+            String email = emailField.getText();
+            String endereco = enderecoField.getText();
+
+            // Verifica se os campos obrigatórios não estão vazios
+            if (nome.isEmpty() || cpf.isEmpty() || telefone.isEmpty() || email.isEmpty() || endereco.isEmpty()) {
+                // Exibe uma mensagem de erro ao usuário
+                JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios.", "Erro de Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            try {
+                int cpfInt = Integer.parseInt(cpf); // Converte o cpf para inteiro
+                int telefoneInt = Integer.parseInt(telefone); // Converte o telefone para double
+
+                // Inicialize a lista de clientes antes de passá-la para o construtor
+                clientes = new ArrayList<>();
+                // Passa a lista para o construtor de ClientesControl
+                ClientesControl operacoes = new ClientesControl(clientes, tableModel, table);
+
+                // Chama o método cadastrar com os dados válidos
+                operacoes.cadastrar(Integer.toString(cpfInt), Double.toString(telefoneInt), endereco, endereco,
+                        endereco);
+
+                // Atualiza a tabela após o cadastro bem-sucedido
+                atualizarTabela();
+
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "CPF e telefone devem ser números válidos.", "Erro de Cadastro",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
+            // Limpar campos após o cadastro bem-sucedido
             nomeField.setText("");
-            // Limpe os outros campos...
+            cpfField.setText("");
+            telefoneField.setText("");
+            emailField.setText("");
+            enderecoField.setText("");
         });
 
         // Tratamento do botão "Editar"
@@ -119,9 +163,18 @@ public class ClientesPainel extends JPanel {
     }
 
     private void atualizarTabela() {
+        tableModel.setRowCount(0); // Limpa todas as linhas existentes na tabela
+        clientes = new ClientesDAO().listarTodos();
+        // Obtém os clientes atualizados do banco de dados
+        for (Clientes clientes : clientes) {
+            // Adiciona os dados de cada cliente como uma nova linha na tabela Swing
+            tableModel.addRow(new Object[] {
+                    clientes.getNome(),
+                    clientes.getCpf(),
+                    clientes.getTelefone(),
+                    clientes.getEmail(),
+                    clientes.getEndereco(),
+            });
+        }
     }
-
-    // Adicione aqui os métodos necessários para atualizar a tabela, semelhante ao
-    // exemplo de CarrosPainel.
-    // ...
 }

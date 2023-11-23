@@ -1,24 +1,52 @@
 package Model;
 
 public class Clientes {
+    // Atributos
+    private String nome;
+    private String cpf;
+    private String telefone;
+    private String endereco;
+    private String email;
 
-    public Clientes(String nome, String cpf, String telefone, String email) {
+    // Contrutor
+    public Clientes(String nome, String cpf, String telefone, String endereco, String email) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.endereco = endereco;
+        this.email = email;
     }
 
-    public Object getNome() {
-        return null;
+    // Getters e Setters
+    public String getNome() {
+        return nome;
     }
-
-    public Object getCPF() {
-        return null;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-
-    public Object getTelefone() {
-        return null;
+    public String getCpf() {
+        return cpf;
     }
-
-    public Object getEmail() {
-        return null;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    public String getTelefone() {
+        return telefone;
+    }
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+    public String getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

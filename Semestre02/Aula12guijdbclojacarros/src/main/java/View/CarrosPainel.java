@@ -15,13 +15,12 @@ import javax.swing.JOptionPane;
 
 import Controller.CarrosControl;
 import Controller.CarrosDAO;
+import Model.Carros;
 
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
-
-import Model.Carros;
 
 public class CarrosPainel extends JPanel {
     // Atributos(componentes)
@@ -36,8 +35,10 @@ public class CarrosPainel extends JPanel {
     // Construtor(GUI-JPanel)
     public CarrosPainel() {
         super();
+
         // entrada de dados
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
         add(new JLabel("Cadastro Carros"));
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new GridLayout(5, 2));
@@ -96,12 +97,10 @@ public class CarrosPainel extends JPanel {
             }
         });
 
-        // Cria um objeto operacoes da classe CarrosControl para executar operações no
-        // banco de dados
+        // Cria um objeto operacoes da classe CarrosControl para executar operações no banco de dados
         CarrosControl operacoes = new CarrosControl(carros, tableModel, table);
 
-        // Configura a ação do botão "cadastrar" para adicionar um novo registro no
-        // banco de dados
+        // Configura a ação do botão "cadastrar" para adicionar um novo registro no banco de dados
 
         cadastrar.addActionListener(e -> {
             String marca = carMarcaField.getText();
@@ -188,4 +187,5 @@ public class CarrosPainel extends JPanel {
             });
         }
     }
+
 }

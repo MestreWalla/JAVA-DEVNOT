@@ -18,40 +18,39 @@ public class ClientesControl {
         this.table = table;
     }
 
-    public void cadastrar(String nome, String cpf, String telefone, String email) {
-        // Adicione aqui a lógica para cadastrar um novo cliente no banco de dados
-        // Exemplo: ClientesDAO.cadastrar(nome, cpf, telefone, email);
-
-        // Atualiza a tabela após o cadastro
-        atualizarTabela();
+    public void cadastrar(String nome, String cpf, String telefone, String email, String endereco) {
+        new ClientesDAO().cadastrar(nome, cpf, telefone, email, endereco);
+        atualizarTabela(); // Atualiza a tabela de exibição após o cadastro
     }
 
-    public void atualizar(String nome, String cpf, String telefone, String email) {
-        // Adicione aqui a lógica para atualizar um cliente no banco de dados
-        // Exemplo: ClientesDAO.atualizar(nome, cpf, telefone, email);
-
-        // Atualiza a tabela após a edição
-        atualizarTabela();
+    public void atualizar(String nome, String cpf, String telefone, String email, String endereco) {
+        new ClientesDAO().atualizar(nome, cpf, telefone, email, endereco);
+        atualizarTabela(); // Atualiza a tabela de exibição após a atualização
     }
 
-    public void apagar(String cpf) {
-        // Adicione aqui a lógica para apagar um cliente do banco de dados
-        // Exemplo: ClientesDAO.apagar(cpf);
-
+    public void apagar(String nome, String cpf, String telefone, String email, String endereco) {
+        new ClientesDAO().apagar(cpf);
         // Atualiza a tabela após a exclusão
         atualizarTabela();
     }
 
     private void atualizarTabela() {
-        // Adicione aqui a lógica para atualizar a tabela com os dados do banco de dados
-        // Exemplo: clientes = ClientesDAO.listarTodos();
+
+        tableModel.setRowCount(0); // Limpa todas as linhas existentes na tabela
+        clientes = new ClientesDAO().listarTodos();
+        // Obtém os clientes atualizados do banco de dados
+        for (Clientes clientes : clientes) {
+            // Adiciona os dados de cada clientes como uma nova linha na tabela Swing
+            tableModel.addRow(new Object[] { clientes.getNome(), clientes.getCpf(),
+                    clientes.getTelefone(), clientes.getEmail(), clientes.getEndereco() });
+        }
 
         // Limpa todas as linhas existentes na tabela
         tableModel.setRowCount(0);
 
         // Adiciona os clientes à tabela
         for (Clientes cliente : clientes) {
-            tableModel.addRow(new Object[] { cliente.getNome(), cliente.getCPF(), cliente.getTelefone(), cliente.getEmail() });
+            tableModel.addRow(new Object[] { cliente.getNome(), cliente.getCpf(), cliente.getTelefone(), cliente.getEmail() });
         }
     }
 }

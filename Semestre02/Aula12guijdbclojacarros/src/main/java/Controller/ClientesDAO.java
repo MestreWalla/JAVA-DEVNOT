@@ -1,96 +1,112 @@
 package Controller;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import Connection.ConnectionFactory;
 import Model.Clientes;
 
 public class ClientesDAO {
 
-    private static final String URL = "jdbc:sqlite:clientes.db"; // Altere para a URL do seu banco de dados SQLite
+    // atributo
+    private Connection connection;
+    private List<Clientes> clientes;
+
+    // Construtor
+    public ClientesDAO() {
+        this.connection = ConnectionFactory.getConnection();
+    }
 
     public void criaTabela() {
-        try (Connection connection = DriverManager.getConnection(URL)) {
-            String sql = "CREATE TABLE IF NOT EXISTS clientes (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "nome TEXT NOT NULL," +
-                    "cpf TEXT NOT NULL UNIQUE," +
-                    "telefone TEXT," +
-                    "email TEXT" +
-                    ")";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.executeUpdate();
-            }
+        String sql = "CREATE TABLE IF NOT EXISTS clientes (NOME VARCHAR(255),CPF VARCHAR(255) PRIMARY KEY, TELEFONE VARCHAR(255),EMAIL VARCHAR(255), ENDERECO VARCHAR(255))";
+        try (Statement stmt = this.connection.createStatement()) {
+            stmt.execute(sql);
+            System.out.println("Tabela criada com sucesso.");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Erro ao criar a tabela: " + e.getMessage(), e);
+        } finally {
+            ConnectionFactory.closeConnection(this.connection);
         }
     }
 
-    public void cadastrar(String nome, String cpf, String telefone, String email) {
-        try (Connection connection = DriverManager.getConnection(URL)) {
-            String sql = "INSERT INTO clientes (nome, cpf, telefone, email) VALUES (?, ?, ?, ?)";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, nome);
-                statement.setString(2, cpf);
-                statement.setString(3, telefone);
-                statement.setString(4, email);
-                statement.executeUpdate();
-            }
+    public void cadastrar(String nome, String cpf, String telefone, String email, String endereco) {
+        PreparedStatement stmt = null;
+        // Define a instrução SQL parametrizada para cadastrar na tabela
+        String sql = "INSERT INTO clientes (nome, cpf, telefone, email, endereco) VALUES (?, ?, ?, ?, ?)";
+        try {
+            stmt = connection.prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setString(2, cpf);
+            stmt.setString(3, telefone);
+            stmt.setString(4, email);
+            stmt.setString(5, endereco);
+            stmt.executeUpdate();
+            System.out.println("Dados inseridos com sucesso");
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Erro ao atualizar dados no banco de dados.", e);
+        } finally {
+            ConnectionFactory.closeConnection(connection, stmt);
         }
     }
 
-    public void atualizar(String nome, String cpf, String telefone, String email) {
-        try (Connection connection = DriverManager.getConnection(URL)) {
-            String sql = "UPDATE clientes SET nome=?, telefone=?, email=? WHERE cpf=?";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, nome);
-                statement.setString(2, telefone);
-                statement.setString(3, email);
-                statement.setString(4, cpf);
-                statement.executeUpdate();
-            }
+    public void atualizar(String nome, String cpf, String telefone, String email, String endereco) {
+        PreparedStatement stmt = null;
+        // Define a instrução SQL parametrizada para atualizar dados pela placa
+        String sql = "UPDATE clientes SET nome=?, WHERE cpf=?, telefone=?, email=?, endereco=?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            stmt = connection.prepareStatement(sql);
+            stmt.setString(1, nome);
+            stmt.setString(2, cpf);
+            stmt.setString(3, telefone);
+            stmt.setString(4, email);
+            stmt.setString(5, endereco);
+            stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Erro ao atualizar dados no banco de dados.", e);
+        } finally {
+            ConnectionFactory.closeConnection(connection, stmt);
         }
     }
 
     public void apagar(String cpf) {
-        try (Connection connection = DriverManager.getConnection(URL)) {
-            String sql = "DELETE FROM clientes WHERE cpf=?";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, cpf);
-                statement.executeUpdate();
-            }
+        PreparedStatement stmt = null;
+        String sql = "DELETE FROM clientes WHERE cpf=?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            stmt = connection.prepareStatement(sql);
+            stmt.setString(1, cpf);
+            stmt.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Erro ao apagar dados no banco de dados.", e);
+        } finally {
+            ConnectionFactory.closeConnection(connection, stmt);
         }
     }
 
     public List<Clientes> listarTodos() {
-        List<Clientes> clientes = new ArrayList<>();
-        try (Connection connection = DriverManager.getConnection(URL)) {
-            String sql = "SELECT * FROM clientes";
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                try (ResultSet resultSet = statement.executeQuery()) {
-                    while (resultSet.next()) {
-                        String nome = resultSet.getString("nome");
-                        String cpf = resultSet.getString("cpf");
-                        String telefone = resultSet.getString("telefone");
-                        String email = resultSet.getString("email");
-                        clientes.add(new Clientes(nome, cpf, telefone, email));
-                    }
-                }
+        PreparedStatement stmt = null;
+        ResultSet resultSet = null;
+        clientes = new ArrayList<>();
+        try {
+            stmt = connection.prepareStatement("SELECT * FROM clientes");
+            resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                String nome = resultSet.getString("nome");
+                String cpf = resultSet.getString("cpf");
+                String telefone = resultSet.getString("telefone");
+                String email = resultSet.getString("email");
+                String endereco = resultSet.getString("endereco");
+                clientes.add(new Clientes(nome, cpf, telefone, email, endereco));
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException ex) {
+            System.out.println(ex); // Em caso de erro durante a consulta, imprime o erro
+        } finally {
+            ConnectionFactory.closeConnection(connection, stmt, resultSet);
         }
-        return clientes;
+        return clientes; // Retorna a lista de carros recuperados do banco de dados
     }
 }
