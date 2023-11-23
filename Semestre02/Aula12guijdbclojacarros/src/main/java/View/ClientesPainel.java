@@ -92,7 +92,7 @@ public class ClientesPainel extends JPanel {
             }
         });
 
-        // Cria um objeto operacoes da classe CarrosControl para executar operações no
+        // Cria um objeto operacoes da classe ClientesControl para executar operações no
         // banco de dados
         ClientesControl operacoes = new ClientesControl(clientes, tableModel, table);
 
@@ -118,8 +118,7 @@ public class ClientesPainel extends JPanel {
                 int telefoneInt = Integer.parseInt(telefone); // Converte o telefone para inteiro
 
                 // Chama o método cadastrar com os dados válidos
-                operacoes.cadastrar(Integer.toString(cpfInt), Double.toString(telefoneInt), endereco, endereco,
-                        endereco);
+                operacoes.cadastrar(nome, Integer.toString(cpfInt), Double.toString(telefoneInt), email, endereco);
 
                 // Atualiza a tabela após o cadastro bem-sucedido
                 atualizarTabela();
