@@ -57,7 +57,7 @@ public class ClientesDAO {
     public void atualizar(String nome, String cpf, String telefone, String email, String endereco) {
         PreparedStatement stmt = null;
         // Define a instrução SQL parametrizada para atualizar dados pela placa
-        String sql = "UPDATE clientes SET nome=?, telefone=?, email=?, endereco=? WHERE cpf=?";
+        String sql = "UPDATE clientes SET nome=?, WHERE cpf=?, telefone=?, email=?, endereco=?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             stmt = connection.prepareStatement(sql);
             stmt.setString(1, nome);
@@ -107,6 +107,6 @@ public class ClientesDAO {
         } finally {
             ConnectionFactory.closeConnection(connection, stmt, resultSet);
         }
-        return clientes; // Retorna a lista de carros recuperados do banco de dados
+        return clientes; // Retorna a lista de clientes recuperados do banco de dados
     }
 }
