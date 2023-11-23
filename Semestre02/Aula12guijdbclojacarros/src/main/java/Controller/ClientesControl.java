@@ -50,7 +50,7 @@ public class ClientesControl {
 
         // Adiciona os clientes à tabela
         for (Clientes cliente : clientes) {
-            tableModel.addRow(new Object[] { cliente.getNome(), cliente.getCpf(), cliente.getTelefone(), cliente.getEmail() });
+            tableModel.addRow(new Object[] { cliente.getNome(), cliente.getCpf(), cliente.getTelefone(), cliente.getEmail(), cliente.getEndereco()});
         }
     }
 }
