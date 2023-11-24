@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import Controller.CarrosControl;
 import Controller.CarrosDAO;
 import Model.Carros;
+import javafx.concurrent.Task;
 
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -120,15 +121,9 @@ public class CarrosPainel extends JPanel {
             }
 
             try {
-                // Converte o ano para inteiro
                 int ano = Integer.parseInt(anoStr);
-
-                // Converte o valor para double
                 double valor = Double.parseDouble(valorStr);
-
-                // Agora você pode chamar o método cadastrar com os dados válidos
                 operacoes.cadastrar(marca, modelo, Integer.toString(ano), placa, Double.toString(valor));
-
                 // Limpa os campos após o cadastro bem-sucedido
                 carMarcaField.setText("");
                 carModeloField.setText("");
@@ -144,27 +139,46 @@ public class CarrosPainel extends JPanel {
 
         // Tratamento do botao editar
         editar.addActionListener(e -> {
-            operacoes.atualizar(carMarcaField.getText(), carModeloField.getText(),
-                    carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
+            Object[] options = { "   Sim   ", "   Não   " };
+            int n = JOptionPane.showOptionDialog(
+                    null,
+                    "Deseja realmente atualizar o cadastro?",
+                    "Confirmar edição de cadastro?",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
 
-            // Limpa os campos após a atualização, independentemente do sucesso ou falha
-            carMarcaField.setText("");
-            carModeloField.setText("");
-            carAnoField.setText("");
-            carPlacaField.setText("");
-            carValorField.setText("");
+            if (n == 0) {
+                operacoes.atualizar(carMarcaField.getText(), carModeloField.getText(),
+                        carAnoField.getText(), carPlacaField.getText(), carValorField.getText());
+
+                // Limpa os campos após a atualização, independentemente do sucesso ou falha
+                carMarcaField.setText("");
+                carModeloField.setText("");
+                carAnoField.setText("");
+                carPlacaField.setText("");
+                carValorField.setText("");
+            }
         });
 
         // Tratamento do botao apagar
         apagar.addActionListener(e -> {
-            operacoes.apagar(carPlacaField.getText());
+            Object[] options = { "   Sim   ", "   Não   " };
+            int n = JOptionPane.showOptionDialog(null, " Deseja realmente excluir todas as tarefas concluidas?",
+                    "Confirmar exclusão de concluido?",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+            if (n == 0) {
+                operacoes.apagar(carPlacaField.getText());
+                // Limpa os campos após a exclusão, independentemente do sucesso ou falha
+                carMarcaField.setText("");
+                carModeloField.setText("");
+                carAnoField.setText("");
+                carPlacaField.setText("");
+                carValorField.setText("");
+            }
 
-            // Limpa os campos após a exclusão, independentemente do sucesso ou falha
-            carMarcaField.setText("");
-            carModeloField.setText("");
-            carAnoField.setText("");
-            carPlacaField.setText("");
-            carValorField.setText("");
         });
     }
 

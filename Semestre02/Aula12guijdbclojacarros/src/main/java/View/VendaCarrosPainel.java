@@ -6,11 +6,15 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import Controller.CarrosDAO;
+import Controller.ClientesDAO;
 import Model.Carros;
+import Model.Clientes;
 
 public class VendaCarrosPainel extends JPanel {
     JComboBox<String> carrosComboBox;
     List<Carros> carros;
+    JComboBox<String> clientesComboBox;
+    List<Clientes> clientes;
 
     public VendaCarrosPainel() {
         super();
@@ -25,6 +29,14 @@ public class VendaCarrosPainel extends JPanel {
         }
         add(carrosComboBox);
 
+        clientesComboBox = new JComboBox<>();
+        clientes = new ClientesDAO().listarTodos();
+        clientesComboBox.addItem("Selecione o Cliente");
+        for  (Clientes cliente : clientes) {
+            clientesComboBox.addItem(cliente.getNome()
+                    + " " + cliente.getCpf());
+        }
+        add(clientesComboBox);
     }
 
     public void atualizarComboBox() {

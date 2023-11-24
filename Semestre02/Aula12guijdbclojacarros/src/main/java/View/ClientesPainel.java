@@ -114,11 +114,11 @@ public class ClientesPainel extends JPanel {
             }
 
             try {
-                int cpfInt = Integer.parseInt(cpf); // Converte o cpf para inteiro
-                int telefoneInt = Integer.parseInt(telefone); // Converte o telefone para inteiro
+                double cpfDouble = Double.parseDouble(cpf); // Converte o cpf para inteiro
+                double telefoneDouble = Double.parseDouble(telefone); // Converte o telefone para inteiro
 
                 // Chama o método cadastrar com os dados válidos
-                operacoes.cadastrar(nome, Integer.toString(cpfInt), Double.toString(telefoneInt), email, endereco);
+                operacoes.cadastrar(nome, Double.toString(cpfDouble), Double.toString(telefoneDouble), email, endereco);
 
                 // Atualiza a tabela após o cadastro bem-sucedido
                 atualizarTabela();
@@ -138,23 +138,49 @@ public class ClientesPainel extends JPanel {
 
         // Tratamento do botão "Editar"
         editar.addActionListener(e -> {
-            nomeField.setText("");
-            cpfField.setText("");
-            telefoneField.setText("");
-            emailField.setText("");
-            enderecoField.setText("");
+            Object[] options = { "   Sim   ", "   Não   " };
+            int n = JOptionPane.showOptionDialog(
+                    null,
+                    "Deseja realmente atualizar o cadastro?",
+                    "Confirmar edição de cadastro?",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE,
+                    null,
+                    options,
+                    options[1]);
+
+            if (n == 0) {
+                // Lógica para realizar a edição, se necessário
+                operacoes.atualizar(nomeField.getText(), cpfField.getText(),
+                        telefoneField.getText(), emailField.getText(), enderecoField.getText());
+                nomeField.setText("");
+                cpfField.setText("");
+                telefoneField.setText("");
+                emailField.setText("");
+                enderecoField.setText("");
+                // Atualiza a tabela após a edição bem-sucedida
+                atualizarTabela();
+            }
         });
 
         // Tratamento do botão "Apagar"
         apagar.addActionListener(e -> {
-            
-            // Limpa os campos após a exclusão, independentemente do sucesso ou falha
-            operacoes.apagar(cpfField.getText());
-            nomeField.setText("");
-            cpfField.setText("");
-            telefoneField.setText("");
-            emailField.setText("");
-            enderecoField.setText("");
+            Object[] options = { "   Sim   ", "   Não   " };
+            int n = JOptionPane.showOptionDialog(null,
+                    "Deseja realmente excluir o cadastro do cliente?\n" +
+                            "Nome: " + nomeField.getText() + "\n" +
+                            "CPF: " + cpfField.getText(),
+                    "Confirmar exclusão de cadastro?",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[1]);
+            if (n == 0) {
+                // Limpa os campos após a exclusão, independentemente do sucesso ou falha
+                operacoes.apagar(cpfField.getText());
+                nomeField.setText("");
+                cpfField.setText("");
+                telefoneField.setText("");
+                emailField.setText("");
+                enderecoField.setText("");
+            }
         });
     }
 
