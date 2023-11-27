@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
 import Controller.CarrosControl;
 import Controller.CarrosDAO;
 import Model.Carros;
-import javafx.concurrent.Task;
 
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
@@ -203,5 +202,4 @@ public class CarrosPainel extends JPanel {
             });
         }
     }
-
 }
