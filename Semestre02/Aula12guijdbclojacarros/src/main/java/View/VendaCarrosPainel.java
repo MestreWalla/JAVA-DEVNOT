@@ -2,6 +2,8 @@ package View;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
 
@@ -12,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.CarrosControl;
@@ -20,6 +23,8 @@ import Controller.ClientesDAO;
 import Controller.VendasDAO;
 import Model.Carros;
 import Model.Clientes;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class VendaCarrosPainel extends JPanel {
     JComboBox<String> carrosComboBox;
@@ -107,6 +112,7 @@ public class VendaCarrosPainel extends JPanel {
             String anoStr = carAnoField.getText();
             String placa = carPlacaField.getText();
             String valorStr = carValorField.getText();
+            preencherCampoData();
 
             // Verifica se os campos obrigatórios não estão vazios
             if (marca.isEmpty() || modelo.isEmpty() || anoStr.isEmpty() || placa.isEmpty() || valorStr.isEmpty()) {
@@ -171,5 +177,22 @@ public class VendaCarrosPainel extends JPanel {
                     valorFormatado // Adiciona o valor formatado como moeda
             });
         }
+    }
+    private void preencherCampoData() {
+        // Obtém a data atual
+        LocalDate dataAtual = LocalDate.now();
+
+        // Formata a data para exibição no campo de texto
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataFormatada = dataAtual.format(formatter);
+
+        // Define o texto do campo de texto como a data formatada
+        dataField.setText(dataFormatada);
+
+        // Aqui você pode adicionar lógica adicional, se necessário
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new ExemploCampoData());
     }
 }
