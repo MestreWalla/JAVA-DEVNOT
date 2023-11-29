@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import Controller.CarrosControl;
 import Controller.CarrosDAO;
 import Controller.ClientesDAO;
+import Controller.VendasDAO;
 import Model.Carros;
 import Model.Clientes;
 
@@ -37,6 +38,8 @@ public class VendaCarrosPainel extends JPanel {
     private JTextField carAnoField = new JTextField();
     private JTextField carPlacaField = new JTextField();
     private JTextField carValorField = new JTextField();
+    private JTextField dataField = new JTextField();
+
 
     private JButton cadastrar = new JButton("Cadastrar");
     private JButton editar = new JButton("Editar");
@@ -44,6 +47,7 @@ public class VendaCarrosPainel extends JPanel {
     public VendaCarrosPainel() {
         super();
 
+        //SELEÇÃO DE CLIENTES
         clientesComboBox = new JComboBox<>();
         clientes = new ClientesDAO().listarTodos();
         clientesComboBox.addItem("Selecione o Cliente");
@@ -53,6 +57,7 @@ public class VendaCarrosPainel extends JPanel {
         add(clientesComboBox);
         add(listarVendasButton);
 
+        //SELEÇÃO DE CARROS
         carrosComboBox = new JComboBox<>();
         carros = new CarrosDAO().listarTodos();
         carrosComboBox.addItem("Selecione o Carro");
@@ -63,15 +68,15 @@ public class VendaCarrosPainel extends JPanel {
         add(carrosComboBox);
         add(venderButton);
 
-        // tabela de carros
+        // tabela de vendas
         JScrollPane jSPane = new JScrollPane();
         add(jSPane);
-        tableModel = new DefaultTableModel(new Object[][] {}, new String[] { "Marca", "Modelo", "Ano", "Placa", "Valor" });
+        tableModel = new DefaultTableModel(new Object[][] {}, new String[] { "Data", "Marca", "Modelo", "Ano", "Placa", "Valor", "Pagamento", "Cpf" });
         table = new JTable(tableModel);
         jSPane.setViewportView(table);
 
         // Cria o banco de dados caso não tenha sido criado
-        new CarrosDAO().criaTabela();
+        new VendasDAO().criaTabela();
         // incluindo elementos do banco na criação do painel
         atualizarTabela();
 
