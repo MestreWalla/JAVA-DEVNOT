@@ -1,4 +1,5 @@
 package View;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
@@ -14,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 import Controller.CarrosControl;
@@ -23,8 +23,6 @@ import Controller.ClientesDAO;
 import Controller.VendasDAO;
 import Model.Carros;
 import Model.Clientes;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class VendaCarrosPainel extends JPanel {
     JComboBox<String> carrosComboBox;
@@ -45,14 +43,13 @@ public class VendaCarrosPainel extends JPanel {
     private JTextField carValorField = new JTextField();
     private JTextField dataField = new JTextField();
 
-
     private JButton cadastrar = new JButton("Cadastrar");
     private JButton editar = new JButton("Editar");
 
     public VendaCarrosPainel() {
         super();
 
-        //SELEÇÃO DE CLIENTES
+        // SELEÇÃO DE CLIENTES
         clientesComboBox = new JComboBox<>();
         clientes = new ClientesDAO().listarTodos();
         clientesComboBox.addItem("Selecione o Cliente");
@@ -62,7 +59,7 @@ public class VendaCarrosPainel extends JPanel {
         add(clientesComboBox);
         add(listarVendasButton);
 
-        //SELEÇÃO DE CARROS
+        // SELEÇÃO DE CARROS
         carrosComboBox = new JComboBox<>();
         carros = new CarrosDAO().listarTodos();
         carrosComboBox.addItem("Selecione o Carro");
@@ -76,7 +73,8 @@ public class VendaCarrosPainel extends JPanel {
         // tabela de vendas
         JScrollPane jSPane = new JScrollPane();
         add(jSPane);
-        tableModel = new DefaultTableModel(new Object[][] {}, new String[] { "Data", "Marca", "Modelo", "Ano", "Placa", "Valor", "Pagamento", "Cpf" });
+        tableModel = new DefaultTableModel(new Object[][] {},
+                new String[] { "Data", "Marca", "Modelo", "Ano", "Placa", "Valor", "Pagamento", "Cpf" });
         table = new JTable(tableModel);
         jSPane.setViewportView(table);
 
@@ -178,6 +176,7 @@ public class VendaCarrosPainel extends JPanel {
             });
         }
     }
+
     private void preencherCampoData() {
         // Obtém a data atual
         LocalDate dataAtual = LocalDate.now();
@@ -190,9 +189,5 @@ public class VendaCarrosPainel extends JPanel {
         dataField.setText(dataFormatada);
 
         // Aqui você pode adicionar lógica adicional, se necessário
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new ExemploCampoData());
     }
 }
